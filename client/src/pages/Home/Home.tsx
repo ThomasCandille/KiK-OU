@@ -4,7 +4,7 @@ import ProfileCard from '../../components/ProfileCard/ProfileCard';
 import { io } from 'socket.io-client';
 import { LocationState } from '../../components/Location/Location';
 
-const socket = io('http://localhost:3001');
+const socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:3001');
 
 function Home() {
 

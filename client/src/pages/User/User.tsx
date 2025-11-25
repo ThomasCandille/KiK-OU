@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './User.css';
 import io from "socket.io-client";
 
-const socket = io("http://localhost:3001");
+const socket = io(`${process.env.PROD_IO_LINK || "http://localhost:3001"}`);
 
 const User = () => {
     const [showMessage, setShowMessage] = useState(false);

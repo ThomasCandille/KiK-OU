@@ -3,7 +3,7 @@ const app = express();
 const http = require('http');
 const {Server} = require('socket.io');
 const cors = require('cors');
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || "http://localhost:3001";
 
 app.use(cors());
 
