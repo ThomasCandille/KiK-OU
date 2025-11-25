@@ -1,0 +1,18 @@
+.location-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.location-picto {
+    width: 20px;
+    height: 20px;
+    filter: invert(75%) sepia(52%) saturate(406%) hue-rotate(84deg) brightness(105%) contrast(95%);
+}
+
+.location-text {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--color);
+}

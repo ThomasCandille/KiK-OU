@@ -1,0 +1,14 @@
+.App{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+
+    background-image: url('/public/pip-boy-background.png');
+    background-repeat: repeat;
+    background-size: 100px;
+}
