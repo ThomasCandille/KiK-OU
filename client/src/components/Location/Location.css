@@ -1,8 +1,8 @@
 .location-container {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+    display: flex;
+    justify-content: flex-end;
+    width: 60%;
+    border-bottom: 3px solid var(--color);
 }
 
 .location-picto {
@@ -12,7 +12,16 @@
 }
 
 .location-text {
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 26px;
+    font-weight: 700;
     color: var(--color);
+}
+
+.location-text:after {
+    position:relative;
+    right:0;
+    bottom:30px;
+    content:'';
+    border-bottom: 30px solid var(--color);
+    border-left: 8px solid transparent;
 }

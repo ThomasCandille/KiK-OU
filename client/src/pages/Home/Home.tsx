@@ -38,6 +38,8 @@ function Home() {
 
   return (
     <div className="App">
+      <header> STATUS DE L'EQUIPE </header>
+      <div className='profile-card-container'>
       <ProfileCard
           key={'orianne-pellois'}
           imageUrl="/empty.svg"
@@ -92,7 +94,7 @@ function Home() {
           mail="thomas.candille@devinci.fr"
           teams="Thomas Candille"
         />
-
+      </div>
     </div>
   );
 }

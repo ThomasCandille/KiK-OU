@@ -1,14 +1,37 @@
 .App{
     margin: 0;
-    padding: 0;
+    padding: 10px;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    box-sizing: border-box;
 
     background-image: url('/public/pip-boy-background.png');
     background-repeat: repeat;
     background-size: 100px;
+
+    header{
+        height: 10%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border : 5px solid var(--color);
+
+        color: var(--color);   
+        text-align: center;
+        font-size: 40px;
+
+        margin-bottom: 20px;
+    }
+        
+    .profile-card-container {
+        height: 85%;
+
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
 }

@@ -63,6 +63,6 @@ body {
   height: 100vh;
 }
 
-body, input, button {
+body, input, button, header, span, p {
   font-family: 'monofonto', sans-serif;
 }

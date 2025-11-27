@@ -16,12 +16,16 @@ const ProfileCard = ({ imageUrl, name, role, location, mail, teams }: ProfileCar
     return (
         <div className="profile-card">
             <img src={imageUrl} alt={`${name}'s profile`} className="profile-image" />
-            <div className="profile-details">
-                <h2 className="profile-name">{name} - {role}</h2>
-                <Location locationState={location} />
-                <p className="profile-contact"><img className='profile-picto' src='/mail.svg' alt='logo mail' /><a href={`mailto:${mail}`}>{mail}</a></p>
-                <p className="profile-contact"><img className='profile-picto' src='/teams.svg' alt='logo teams' /><a href={teams} target="_blank" rel="noopener noreferrer">Chat</a></p>
-            </div>
+                <div className="profile-details">
+                    <div className='profile-container'>
+                        <h2 className="profile-name">{name}</h2>
+                        <p className="profile-role"><img className='profile-picto' src='/profile.svg' alt='logo profile' />{role}</p>
+                        <p className="profile-contact"><img className='profile-picto' src='/mail.svg' alt='logo mail' />{mail}</p>
+                    </div>
+                    <div className="location">
+                        <Location locationState={location} />
+                    </div>
+                </div>
         </div>
     );
 }

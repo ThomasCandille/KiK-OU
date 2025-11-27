@@ -8,27 +8,27 @@ interface LocationProps {
 }
 
 const locationTextMap: { [key in NonNullable<LocationProps['locationState']>]: string } = {
-    bureau: "au bureau",
-    crealab: "au CreaLab",
-    reunion: "en réunion",
-    teletravail: "en télétravail",
-    absent: "absent",
-    inconnu: "inconnu"
+    bureau: "Présent",
+    crealab: "CreaLab",
+    reunion: "En réunion",
+    teletravail: "Télétravail",
+    absent: "Absent",
+    inconnu: "Inconnu"
 };
 
-const pictoLinkMap: { [key in NonNullable<LocationProps['locationState']>]: string } = {
-    bureau: "/location_bureau.svg",
-    crealab: "/location_crealab.svg",
-    reunion: "/location_reunion.svg",
-    teletravail: "/location_teletravail.svg",
-    absent: "/location_absent.svg",
-    inconnu: "/location_inconnu.svg"
-};
+// const pictoLinkMap: { [key in NonNullable<LocationProps['locationState']>]: string } = {
+//     bureau: "/location_bureau.svg",
+//     crealab: "/location_crealab.svg",
+//     reunion: "/location_reunion.svg",
+//     teletravail: "/location_teletravail.svg",
+//     absent: "/location_absent.svg",
+//     inconnu: "/location_inconnu.svg"
+// };
 
 const Location= ({locationState = "inconnu"}:LocationProps) => {
     return (
         <div className="location-container">
-            <img src={pictoLinkMap[locationState]} alt="Location Icon" className="location-picto" />
+            {/* <img src={pictoLinkMap[locationState]} alt="Location Icon" className="location-picto" /> */}
             <span className="location-text">{locationTextMap[locationState]}</span>
         </div>
     );
