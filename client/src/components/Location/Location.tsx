@@ -5,6 +5,7 @@ export type LocationState = 'bureau' | 'crealab' | 'reunion' | 'teletravail' | '
 
 interface LocationProps {
     locationState?: LocationState;
+    user?: boolean;
 }
 
 const locationTextMap: { [key in NonNullable<LocationProps['locationState']>]: string } = {
@@ -16,20 +17,10 @@ const locationTextMap: { [key in NonNullable<LocationProps['locationState']>]: s
     inconnu: "Inconnu"
 };
 
-// const pictoLinkMap: { [key in NonNullable<LocationProps['locationState']>]: string } = {
-//     bureau: "/location_bureau.svg",
-//     crealab: "/location_crealab.svg",
-//     reunion: "/location_reunion.svg",
-//     teletravail: "/location_teletravail.svg",
-//     absent: "/location_absent.svg",
-//     inconnu: "/location_inconnu.svg"
-// };
-
-const Location= ({locationState = "inconnu"}:LocationProps) => {
+const Location= ({locationState = "inconnu", user = false}:LocationProps) => {
     return (
         <div className={`location-container ${locationState}`}>
-            {/* <img src={pictoLinkMap[locationState]} alt="Location Icon" className="location-picto" /> */}
-            <span className={`location-text ${locationState}`}>{locationTextMap[locationState]}</span>
+            <span className={`location-text ${locationState}`}>{`${locationTextMap[locationState]} ${user ? 'en 202' : ''}`}</span>
         </div>
     );
 };

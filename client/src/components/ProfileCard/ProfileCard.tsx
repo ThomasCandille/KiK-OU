@@ -23,7 +23,7 @@ const ProfileCard = ({ imageUrl, name, role, location, mail }: ProfileCardProps)
                         <p className={`profile-contact ${location}`}><img className={`profile-picto ${location}`} src='/mail.svg' alt='logo mail' />{mail}</p>
                     </div>
                     <div className="location">
-                        <Location locationState={location} />
+                        <Location locationState={location} user={name === 'Silamakan TOURE' && true } />
                     </div>
                 </div>
         </div>
