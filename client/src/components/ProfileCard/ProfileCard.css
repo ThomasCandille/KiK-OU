@@ -4,6 +4,13 @@
     align-items: center;
     gap: 5%;
     border: 5px solid var(--color);
+            
+            &.teletravail {
+                border-color: rgba(110, 249, 158, 0.5);
+            }
+            &.absent {
+                border-color: rgba(110, 249, 158, 0.5);
+            }
 }
 
 .profile-image {
@@ -13,6 +20,13 @@
     flex-shrink: 0;
     padding: 2.5%;
     border-right: 3px solid var(--color);
+            
+            &.teletravail {
+                border-color: rgba(110, 249, 158, 0.5);
+            }
+            &.absent {
+                border-color: rgba(110, 249, 158, 0.5);
+            }
 }
 
 .profile-details {
@@ -31,12 +45,26 @@
             letter-spacing: 2px;
             color: var(--color);
             padding-bottom: 8px;
+            
+            &.teletravail {
+                color: rgba(110, 249, 158, 0.5);
+            }
+            &.absent {
+                color: rgba(110, 249, 158, 0.5);
+            }
         }
 
         .profile-role {
             font-size: 16px;
             color: var(--color);
             padding-bottom: 2px;
+            
+            &.teletravail {
+                color: rgba(110, 249, 158, 0.5);
+            }
+            &.absent {
+                color: rgba(110, 249, 158, 0.5);
+            }
         }
 
         .profile-picto {
@@ -44,12 +72,26 @@
             width: 16px;
             filter: invert(75%) sepia(52%) saturate(406%) hue-rotate(84deg) brightness(105%) contrast(95%);
             margin-right: 5px;
+
+            &.teletravail {
+                opacity: 0.5;
+            }
+            &.absent {
+                opacity: 0.5;
+            }
         }
 
         .profile-contact {
             display: inline-flex;
             align-items: center;
             color: var(--color);
+            
+            &.teletravail {
+                color: rgba(110, 249, 158, 0.5);
+            }
+            &.absent {
+                color: rgba(110, 249, 158, 0.5);
+            }   
         }
 
         .profile-contact img {

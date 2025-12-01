@@ -33,7 +33,7 @@ function Home() {
     return () => {
       socket.off('statusUpdated');
     };
-  }, []);
+  }, [userLocationDict]);
 
 
   return (

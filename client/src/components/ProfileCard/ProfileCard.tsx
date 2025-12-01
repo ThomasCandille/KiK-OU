@@ -12,15 +12,15 @@ interface ProfileCardProps {
     teams:string;
 }
 
-const ProfileCard = ({ imageUrl, name, role, location, mail, teams }: ProfileCardProps) => {
+const ProfileCard = ({ imageUrl, name, role, location, mail }: ProfileCardProps) => {
     return (
-        <div className="profile-card">
-            <img src={imageUrl} alt={`${name}'s profile`} className="profile-image" />
+        <div className={`profile-card ${location}`}>
+            <img src={imageUrl} alt={`${name}'s profile`} className={`profile-image ${location}`} />
                 <div className="profile-details">
                     <div className='profile-container'>
-                        <h2 className="profile-name">{name}</h2>
-                        <p className="profile-role"><img className='profile-picto' src='/profile.svg' alt='logo profile' />{role}</p>
-                        <p className="profile-contact"><img className='profile-picto' src='/mail.svg' alt='logo mail' />{mail}</p>
+                        <h2 className={`profile-name ${location}`}>{name}</h2>
+                        <p className={`profile-role ${location}`}><img className={`profile-picto ${location}`} src='/profile.svg' alt='logo profile' />{role}</p>
+                        <p className={`profile-contact ${location}`}><img className={`profile-picto ${location}`} src='/mail.svg' alt='logo mail' />{mail}</p>
                     </div>
                     <div className="location">
                         <Location locationState={location} />

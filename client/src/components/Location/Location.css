@@ -3,6 +3,10 @@
     justify-content: flex-end;
     width: 60%;
     border-bottom: 3px solid var(--color);
+
+    &.absent {
+        border-color: rgba(110, 249, 158, 0.5);
+    }
 }
 
 .location-picto {
@@ -15,13 +19,21 @@
     font-size: 26px;
     font-weight: 700;
     color: var(--color);
-}
 
-.location-text:after {
-    position:relative;
-    right:0;
-    bottom:30px;
-    content:'';
-    border-bottom: 30px solid var(--color);
-    border-left: 8px solid transparent;
+    &.absent {
+        color: rgba(110, 249, 158, 0.5);
+        }
+
+    &:after {
+        position:relative;
+        right:0;
+        bottom:30px;
+        content:'';
+        border-bottom: 30px solid var(--color);
+        border-left: 8px solid transparent;
+    }
+
+    &.absent:after {
+        border-bottom-color: rgba(110, 249, 158, 0.5);
+    }
 }

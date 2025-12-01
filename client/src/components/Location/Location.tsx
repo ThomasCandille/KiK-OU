@@ -27,9 +27,9 @@ const locationTextMap: { [key in NonNullable<LocationProps['locationState']>]: s
 
 const Location= ({locationState = "inconnu"}:LocationProps) => {
     return (
-        <div className="location-container">
+        <div className={`location-container ${locationState}`}>
             {/* <img src={pictoLinkMap[locationState]} alt="Location Icon" className="location-picto" /> */}
-            <span className="location-text">{locationTextMap[locationState]}</span>
+            <span className={`location-text ${locationState}`}>{locationTextMap[locationState]}</span>
         </div>
     );
 };
