@@ -106,6 +106,4 @@
     width: 90%;
     display: flex;
     justify-content: flex-end;
-    font-size: 32px;
-    color: var(--color);
 }
