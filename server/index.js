@@ -40,9 +40,22 @@ const io = new Server(server, {
     }
 });
 
+// Store user locations in memory
+const userLocations = {
+    'orianne-pellois': 'bureau',
+    'pierrick-chevron': 'bureau',
+    'gabriel-monier': 'bureau',
+    'sofy-yuditskaya': 'bureau',
+    'silamakan-toure': 'bureau',
+    'thomas-candille': 'bureau'
+};
+
 // Socket connection handling with error handling
 io.on('connection', (socket) => {
     console.log(`New user connected: ${socket.id} at ${new Date().toISOString()}`);
+
+    // Send current user locations to the newly connected client
+    socket.emit('initialState', userLocations);
 
     socket.on('statusUpdate', (data) => {
         try {
@@ -53,7 +66,12 @@ io.on('connection', (socket) => {
             }
 
             console.log(`Status update - User: ${data.user}, Location: ${data.location}`);
-            socket.broadcast.emit('statusUpdated', data);
+            
+            // Update stored location
+            userLocations[data.user] = data.location;
+            
+            // Broadcast to all clients (including sender)
+            io.emit('statusUpdated', data);
         } catch (error) {
             console.error('Error handling status update:', error);
         }

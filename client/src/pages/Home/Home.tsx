@@ -8,16 +8,15 @@ const socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:3001');
 
 function Home() {
 
-  const [userLocationDict, setUserLocationDict] = useState<{ [key: string]: LocationState }>({
-    'orianne-pellois': 'bureau',
-    'pierrick-chevron': 'bureau',
-    'gabriel-monier': 'bureau',
-    'sofy-yuditskaya': 'bureau',
-    'silamakan-toure': 'bureau',
-    'thomas-candille': 'bureau'
-  });
+  const [userLocationDict, setUserLocationDict] = useState<{ [key: string]: LocationState }>({});
 
   useEffect(() => {
+    // Receive initial state from server
+    socket.on('initialState', (data) => {
+      console.log('Initial state received:', data);
+      setUserLocationDict(data);
+    });
+
     socket.on('statusUpdated', (data) => {
       console.log('Status response received:', data);
       const user = data.user;
@@ -27,13 +26,13 @@ function Home() {
         ...prev,
         [user]: location
       }));
-      console.log('Updated UserLocationDict:', userLocationDict);
     });
 
     return () => {
+      socket.off('initialState');
       socket.off('statusUpdated');
     };
-  }, [userLocationDict]);
+  }, []);
 
 
   return (
