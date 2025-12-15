@@ -20,7 +20,7 @@ const locationTextMap: { [key in NonNullable<LocationProps['locationState']>]: s
 const Location= ({locationState = "inconnu", user = false}:LocationProps) => {
     return (
         <div className={`location-container ${locationState}`}>
-            <span className={`location-text ${locationState}`}>{`${locationTextMap[locationState]} ${user ? 'en 202' : ''}`}</span>
+            <span className={`location-text ${locationState}`}>{`${locationTextMap[locationState]} ${user && locationState === 'bureau' ? 'en 202' : ''}`}</span>
         </div>
     );
 };
