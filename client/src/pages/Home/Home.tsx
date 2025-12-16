@@ -41,7 +41,7 @@ function Home() {
       <div className='profile-card-container'>
       <ProfileCard
           key={'orianne-pellois'}
-          imageUrl="/empty.svg"
+          imageUrl="/icon_orianne.svg"
           name="Orianne PELLOIS"
           role="Responsable d'axe"
           location={userLocationDict['orianne-pellois']}
@@ -50,7 +50,7 @@ function Home() {
         />
       <ProfileCard
           key={'pierrick-chevron'}
-          imageUrl="/empty.svg"
+          imageUrl="/icon_pierrick.svg"
           name="Pierrick CHEVRON"
           role="Professeur délégué"
           location={userLocationDict['pierrick-chevron']}
@@ -59,7 +59,7 @@ function Home() {
         />
       <ProfileCard
           key={'gabriel-monier'}
-          imageUrl="/empty.svg"
+          imageUrl="/icon_gabriel.svg"
           name="Gabriel MONIER"
           role="Professeur délégué"
           location={userLocationDict['gabriel-monier']}
@@ -68,7 +68,7 @@ function Home() {
         />
       <ProfileCard
           key={'sofy-yuditskaya'}
-          imageUrl="/empty.svg"
+          imageUrl="/icon_sofy.svg"
           name="Sofy YUDITSKAYA"
           role="Enseignante-chercheuse"
           location={userLocationDict['sofy-yuditskaya']}
@@ -77,7 +77,7 @@ function Home() {
         />
       <ProfileCard
           key={'silamakan-toure'}
-          imageUrl="/empty.svg"
+          imageUrl="/icon_sila.svg"
           name="Silamakan TOURE"
           role="coordinateur pédagogique"
           location={userLocationDict['silamakan-toure']}
@@ -86,7 +86,7 @@ function Home() {
         />
         <ProfileCard
           key={'thomas-candille'}
-          imageUrl="/empty.svg"
+          imageUrl="/icon_thomas.svg"
           name="Thomas CANDILLE"
           role="Alernant"
           location={userLocationDict['thomas-candille']}
