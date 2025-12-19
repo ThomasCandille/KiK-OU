@@ -12,7 +12,6 @@
 .location-picto {
     width: 20px;
     height: 20px;
-    filter: invert(72%) sepia(91%) saturate(2280%) hue-rotate(55deg) brightness(106%) contrast(120%);
 }
 
 .location-text {
