@@ -4,8 +4,23 @@
     width: 90%;
     border-bottom: 3px solid var(--color);
 
+    &.bureau {
+        border-color: var(--bureau-color);
+    }
+    &.crealab {
+        border-color: var(--crealab-color);
+    }
+    &.reunion {
+        border-color: var(--reunion-color);
+    }
+    &.teletravail {
+        border-color: var(--teletravail-color);
+    }
     &.absent {
         border-color: var(--absent-color);
+    }
+    &.inconnu {
+        border-color: var(--inconnu-color);
     }
 }
 
@@ -19,9 +34,24 @@
     font-weight: 700;
     color: var(--color);
 
+    &.bureau {
+        color: var(--bureau-color);
+    }
+    &.crealab {
+        color: var(--crealab-color);
+    }
+    &.reunion {
+        color: var(--reunion-color);
+    }
+    &.teletravail {
+        color: var(--teletravail-color);
+    }
     &.absent {
         color: var(--absent-color);
-        }
+    }
+    &.inconnu {
+        color: var(--inconnu-color);
+    }
 
     &:after {
         position:relative;
@@ -32,7 +62,22 @@
         border-left: 8px solid transparent;
     }
 
+    &.bureau:after {
+        border-bottom-color: var(--bureau-color);
+    }
+    &.crealab:after {
+        border-bottom-color: var(--crealab-color);
+    }
+    &.reunion:after {
+        border-bottom-color: var(--reunion-color);
+    }
+    &.teletravail:after {
+        border-bottom-color: var(--teletravail-color);
+    }
     &.absent:after {
         border-bottom-color: var(--absent-color);
+    }
+    &.inconnu:after {
+        border-bottom-color: var(--inconnu-color);
     }
 }

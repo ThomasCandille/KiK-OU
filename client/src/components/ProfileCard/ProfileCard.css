@@ -5,11 +5,23 @@
     gap: 5%;
     border: 5px solid var(--color);
             
+            &.bureau {
+                border-color: var(--bureau-color);
+            }
+            &.crealab {
+                border-color: var(--crealab-color);
+            }
+            &.reunion {
+                border-color: var(--reunion-color);
+            }
             &.teletravail {
-                border-color: var(--absent-color);
+                border-color: var(--teletravail-color);
             }
             &.absent {
                 border-color: var(--absent-color);
+            }
+            &.inconnu {
+                border-color: var(--inconnu-color);
             }
 }
 
@@ -22,11 +34,23 @@
     border-right: 3px solid var(--color);
     
             
+            &.bureau {
+                border-color: var(--bureau-color);
+            }
+            &.crealab {
+                border-color: var(--crealab-color);
+            }
+            &.reunion {
+                border-color: var(--reunion-color);
+            }
             &.teletravail {
-                border-color: var(--absent-color);
+                border-color: var(--teletravail-color);
             }
             &.absent {
                 border-color: var(--absent-color);
+            }
+            &.inconnu {
+                border-color: var(--inconnu-color);
             }
 }
 
@@ -47,11 +71,23 @@
             color: var(--color);
             padding-bottom: 8px;
             
+            &.bureau {
+                color: var(--bureau-color);
+            }
+            &.crealab {
+                color: var(--crealab-color);
+            }
+            &.reunion {
+                color: var(--reunion-color);
+            }
             &.teletravail {
-                color: var(--absent-color);
+                color: var(--teletravail-color);
             }
             &.absent {
                 color: var(--absent-color);
+            }
+            &.inconnu {
+                color: var(--inconnu-color);
             }
         }
 

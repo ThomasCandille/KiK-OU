@@ -5,8 +5,15 @@
 
 :root{
 	--color: #0D0D0D;
-	--absent-color: #bbbbbb
 	--background: #ffffff;
+	
+	/* Location colors */
+	--bureau-color: #22c55e;
+	--crealab-color: #15803d;
+	--reunion-color: #ef4444;
+	--teletravail-color: #3b82f6;
+	--absent-color: #9ca3af;
+	--inconnu-color: #6b7280;
 }
 
 @font-face{
