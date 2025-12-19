@@ -21,7 +21,7 @@ const ProfileCard = ({ imageUrl, name, role, location, mail }: ProfileCardProps)
                         <h2 className={`profile-name ${location}`}>{name}</h2>
                     </div>
                     <div className="location">
-                        <Location locationState={location} user={name === 'Silamakan TOURE' && true } />
+                        <Location locationState={location} />
                     </div>
                 </div>
         </div>

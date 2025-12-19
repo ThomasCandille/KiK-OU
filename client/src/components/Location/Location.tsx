@@ -5,7 +5,6 @@ export type LocationState = 'bureau' | 'crealab' | 'reunion' | 'teletravail' | '
 
 interface LocationProps {
     locationState?: LocationState;
-    user?: boolean;
 }
 
 const locationTextMap: { [key in NonNullable<LocationProps['locationState']>]: string } = {
@@ -17,10 +16,10 @@ const locationTextMap: { [key in NonNullable<LocationProps['locationState']>]: s
     inconnu: "Inconnu"
 };
 
-const Location= ({locationState = "inconnu", user = false}:LocationProps) => {
+const Location= ({locationState = "inconnu"}:LocationProps) => {
     return (
         <div className={`location-container ${locationState}`}>
-            <span className={`location-text ${locationState}`}>{`${locationTextMap[locationState]} ${user && locationState === 'bureau' ? 'en 202' : ''}`}</span>
+            <span className={`location-text ${locationState}`}>{locationTextMap[locationState]}</span>
         </div>
     );
 };
