@@ -5,7 +5,7 @@
     border-bottom: 3px solid var(--color);
 
     &.absent {
-        border-color: rgba(110, 249, 158, 0.5);
+        border-color: var(--absent-color);
     }
 }
 
@@ -15,12 +15,12 @@
 }
 
 .location-text {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--color);
 
     &.absent {
-        color: rgba(110, 249, 158, 0.5);
+        color: var(--absent-color);
         }
 
     &:after {
@@ -33,6 +33,6 @@
     }
 
     &.absent:after {
-        border-bottom-color: rgba(110, 249, 158, 0.5);
+        border-bottom-color: var(--absent-color);
     }
 }
