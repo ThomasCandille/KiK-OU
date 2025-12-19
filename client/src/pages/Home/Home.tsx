@@ -37,7 +37,7 @@ function Home() {
 
   return (
     <div className="App">
-      <header> STATUS DE L'EQUIPE </header>
+      <header> PRESENCES DE L'EQUIPE </header>
       <div className='profile-card-container'>
       <ProfileCard
           key={'orianne-pellois'}
