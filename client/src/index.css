@@ -5,7 +5,8 @@
 
 :root{
 	--color: #0D0D0D;
-	--background: #48ff00;
+	--absent-color: #bbbbbb
+	--background: #ffffff;
 }
 
 @font-face{
