@@ -8,10 +8,7 @@
     display:flex;
     justify-content: center;
     align-items: center;
-
-    background-image: url('/public/pip-boy-background.png');
-    background-repeat: repeat;
-    background-size: 100px;
+    background-color: var(--background);
 
     .user-form{
         height: 80%;
@@ -39,7 +36,7 @@
         }
 
         .success-message{
-            color: #6EF99E;
+            color: var(--color);
             font-size: 1.2rem;
             margin-top: 1rem;
         }
