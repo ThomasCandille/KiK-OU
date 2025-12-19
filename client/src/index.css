@@ -8,12 +8,12 @@
 	--background: #ffffff;
 	
 	/* Location colors - optimized for e-ink/white background contrast */
-	--bureau-color: #047857;
-	--crealab-color: #064e3b;
-	--reunion-color: #b91c1c;
-	--teletravail-color: #1d4ed8;
-	--absent-color: #6b7280;
-	--inconnu-color: #374151;
+	--bureau-color: #059669;
+	--crealab-color: #047857;
+	--reunion-color: #dc2626;
+	--teletravail-color: #2563eb;
+	--absent-color: #9ca3af;
+	--inconnu-color: #6b7280;
 }
 
 @font-face{
