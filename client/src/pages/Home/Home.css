@@ -5,10 +5,7 @@
     width: 100vw;
     overflow: hidden;
     box-sizing: border-box;
-
-    background-image: url('/public/pip-boy-background.png');
-    background-repeat: repeat;
-    background-size: 100px;
+    background-color: var(--background);
 
     header{
         height: 8%;

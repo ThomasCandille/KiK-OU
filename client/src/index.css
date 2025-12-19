@@ -4,7 +4,8 @@
 */
 
 :root{
-	--color: #6EF99E
+	--color: #48ff00ff;
+	--background: #0D0D0D;
 }
 
 @font-face{

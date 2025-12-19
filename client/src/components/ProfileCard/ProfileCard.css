@@ -20,6 +20,7 @@
     flex-shrink: 0;
     padding: 2.5%;
     border-right: 3px solid var(--color);
+    filter: invert(72%) sepia(91%) saturate(2280%) hue-rotate(55deg) brightness(106%) contrast(120%);
             
             &.teletravail {
                 border-color: rgba(110, 249, 158, 0.5);
@@ -70,7 +71,7 @@
         .profile-picto {
             height: 12px;
             width: 12px;
-            filter: invert(75%) sepia(52%) saturate(406%) hue-rotate(84deg) brightness(105%) contrast(95%);
+            filter: invert(72%) sepia(91%) saturate(2280%) hue-rotate(55deg) brightness(106%) contrast(120%);
             margin-right: 5px;
 
             &.teletravail {
