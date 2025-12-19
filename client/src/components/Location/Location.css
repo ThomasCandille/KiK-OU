@@ -1,7 +1,7 @@
 .location-container {
     display: flex;
     justify-content: flex-end;
-    width: 70%;
+    width: 90%;
     border-bottom: 3px solid var(--color);
 
     &.absent {
