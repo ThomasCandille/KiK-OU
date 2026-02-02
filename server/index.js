@@ -57,6 +57,19 @@ app.use('/api', apiRoutes);
 // Setup socket handlers
 setupSocketHandlers(io);
 
+// Check database connection on startup
+(async () => {
+    try {
+        console.log('🚀 Checking database connection on startup...');
+        await userService.checkTableStructure();
+        const locations = await userService.getAllLocations();
+        console.log('✅ Database connection successful');
+        console.log('📊 Current locations:', locations);
+    } catch (error) {
+        console.error('❌ Database connection failed on startup:', error);
+    }
+})();
+
 // Graceful shutdown
 process.on('SIGTERM', () => {
     console.log('Shutting down gracefully...');
