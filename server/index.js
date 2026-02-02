@@ -1,23 +1,29 @@
 const express = require('express');
-const app = express();
 const http = require('http');
-const {Server} = require('socket.io');
+const { Server } = require('socket.io');
 const cors = require('cors');
+
+const userService = require('./services/userService');
+const apiRoutes = require('./routes/api');
+const setupSocketHandlers = require('./handlers/socketHandlers');
+
+const app = express();
+const server = http.createServer(app);
 
 // Environment configuration
 const port = process.env.PORT || 3001;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const allowedOrigins = process.env.ALLOWED_ORIGINS ? 
-    process.env.ALLOWED_ORIGINS.split(',') : 
-    ['http://localhost:3000'];
+    process.env.ALLOWED_ORIGINS.split(',') : ['http://localhost:3000'];
 
-// CORS configuration
+// Middleware
 app.use(cors({
     origin: NODE_ENV === 'production' ? allowedOrigins : '*',
     credentials: true
 }));
+app.use(express.json());
 
-// Basic security headers
+// Security headers
 app.use((req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'DENY');
@@ -25,13 +31,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Health check endpoint
-app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
-});
-
-const server = http.createServer(app);
-
+// Socket.io setup
 const io = new Server(server, {
     cors: {
         origin: NODE_ENV === 'production' ? allowedOrigins : '*',
@@ -40,59 +40,26 @@ const io = new Server(server, {
     }
 });
 
-// Store user locations in memory
-const userLocations = {
-    'orianne-pellois': 'bureau',
-    'pierrick-chevron': 'bureau',
-    'gabriel-monier': 'bureau',
-    'sofy-yuditskaya': 'bureau',
-    'silamakan-toure': 'bureau',
-    'thomas-candille': 'bureau'
-};
-
-// Socket connection handling with error handling
-io.on('connection', (socket) => {
-    console.log(`New user connected: ${socket.id} at ${new Date().toISOString()}`);
-
-    // Send current user locations to the newly connected client
-    socket.emit('initialState', userLocations);
-
-    socket.on('statusUpdate', (data) => {
-        try {
-            // Validate data
-            if (!data || !data.user || !data.location) {
-                console.error('Invalid status update data:', data);
-                return;
-            }
-
-            console.log(`Status update - User: ${data.user}, Location: ${data.location}`);
-            
-            // Update stored location
-            userLocations[data.user] = data.location;
-            
-            // Broadcast to all clients (including sender)
-            io.emit('statusUpdated', data);
-        } catch (error) {
-            console.error('Error handling status update:', error);
-        }
-    });
-
-    socket.on('disconnect', () => {
-        console.log(`User disconnected: ${socket.id}`);
-    });
-
-    socket.on('error', (error) => {
-        console.error('Socket error:', error);
-    });
+// Make io available to routes
+app.use((req, res, next) => {
+    req.io = io;
+    next();
 });
+
+// Routes
+app.get('/health', (req, res) => {
+    res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+app.use('/api', apiRoutes);
+
+// Setup socket handlers
+setupSocketHandlers(io);
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
-    console.log('SIGTERM received. Shutting down gracefully...');
-    server.close(() => {
-        console.log('Server closed.');
-        process.exit(0);
-    });
+    console.log('Shutting down gracefully...');
+    server.close(() => process.exit(0));
 });
 
 server.listen(port, () => {
