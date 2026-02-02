@@ -16,10 +16,12 @@ const locationTextMap: { [key in NonNullable<LocationProps['locationState']>]: s
     inconnu: "Inconnu"
 };
 
-const Location= ({locationState = "inconnu"}:LocationProps) => {
+const Location = ({locationState = "inconnu"}: LocationProps) => {
     return (
         <div className={`location-container ${locationState}`}>
-            <span className={`location-text ${locationState}`}>{locationTextMap[locationState]}</span>
+            <span className={`location-text ${locationState}`}>
+                {locationTextMap[locationState]}
+            </span>
         </div>
     );
 };

@@ -7,24 +7,17 @@ import { LocationState } from '../../components/Location/Location';
 const socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:3001');
 
 function Home() {
-
   const [userLocationDict, setUserLocationDict] = useState<{ [key: string]: LocationState }>({});
 
   useEffect(() => {
-    // Receive initial state from server
     socket.on('initialState', (data) => {
-      console.log('Initial state received:', data);
       setUserLocationDict(data);
     });
 
     socket.on('statusUpdated', (data) => {
-      console.log('Status response received:', data);
-      const user = data.user;
-      const location = data.location;
-
       setUserLocationDict(prev => ({
         ...prev,
-        [user]: location
+        [data.user]: data.location
       }));
     });
 
@@ -34,12 +27,11 @@ function Home() {
     };
   }, []);
 
-
   return (
     <div className="App">
       <header> PRESENCE DES MEMBRES DE L'EQUIPE </header>
       <div className='profile-card-container'>
-      <ProfileCard
+        <ProfileCard
           key={'orianne-pellois'}
           imageUrl="/icon_orianne.svg"
           name="Orianne PELLOIS"
@@ -48,7 +40,7 @@ function Home() {
           mail="orianne.pellois@devinci.fr"
           teams="Orianne Pellois"
         />
-      <ProfileCard
+        <ProfileCard
           key={'pierrick-chevron'}
           imageUrl="/icon_pierrick.svg"
           name="Pierrick CHEVRON"
@@ -57,7 +49,7 @@ function Home() {
           mail="pierrick.chevron@devinci.fr"
           teams="Pierrick Chevron"
         />
-      <ProfileCard
+        <ProfileCard
           key={'gabriel-monier'}
           imageUrl="/icon_gabriel.svg"
           name="Gabriel MONIER"
@@ -66,7 +58,7 @@ function Home() {
           mail="gabriel.monier@devinci.fr"
           teams="Gabriel Monier"
         />
-      <ProfileCard
+        <ProfileCard
           key={'sofy-yuditskaya'}
           imageUrl="/icon_sofy.svg"
           name="Sofy YUDITSKAYA"
@@ -75,7 +67,7 @@ function Home() {
           mail="sofy.yuditskaya@devinci.fr"
           teams="Sofy Yuditskaya"
         />
-      <ProfileCard
+        <ProfileCard
           key={'silamakan-toure'}
           imageUrl="/icon_sila.svg"
           name="Silamakan TOURE"

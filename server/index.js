@@ -11,20 +11,17 @@ const setupSocketHandlers = require('./handlers/socketHandlers');
 const app = express();
 const server = http.createServer(app);
 
-// Environment configuration
 const port = process.env.PORT || 3001;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const allowedOrigins = process.env.ALLOWED_ORIGINS ? 
     process.env.ALLOWED_ORIGINS.split(',') : ['http://localhost:3000'];
 
-// Middleware
 app.use(cors({
     origin: NODE_ENV === 'production' ? allowedOrigins : '*',
     credentials: true
 }));
 app.use(express.json());
 
-// Security headers
 app.use((req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'DENY');
@@ -32,7 +29,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Socket.io setup
 const io = new Server(server, {
     cors: {
         origin: NODE_ENV === 'production' ? allowedOrigins : '*',
@@ -41,36 +37,19 @@ const io = new Server(server, {
     }
 });
 
-// Make io available to routes
 app.use((req, res, next) => {
     req.io = io;
     next();
 });
 
-// Routes
 app.get('/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
 app.use('/api', apiRoutes);
 
-// Setup socket handlers
 setupSocketHandlers(io);
 
-// Check database connection on startup
-(async () => {
-    try {
-        console.log('🚀 Checking database connection on startup...');
-        await userService.checkTableStructure();
-        const locations = await userService.getAllLocations();
-        console.log('✅ Database connection successful');
-        console.log('📊 Current locations:', locations);
-    } catch (error) {
-        console.error('❌ Database connection failed on startup:', error);
-    }
-})();
-
-// Graceful shutdown
 process.on('SIGTERM', () => {
     console.log('Shutting down gracefully...');
     server.close(() => process.exit(0));
