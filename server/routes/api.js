@@ -3,6 +3,27 @@ const userService = require('../services/userService');
 
 const router = express.Router();
 
+// Test endpoint to check database connection
+router.get('/test', async (req, res) => {
+    try {
+        console.log('Testing database connection...');
+        const locations = await userService.getAllLocations();
+        res.json({ 
+            success: true, 
+            message: 'Database connection working',
+            data: locations,
+            timestamp: new Date().toISOString()
+        });
+    } catch (error) {
+        console.error('Database test failed:', error);
+        res.status(500).json({ 
+            success: false, 
+            error: error.message,
+            details: error.details || 'No additional details'
+        });
+    }
+});
+
 router.get('/locations', async (req, res) => {
     try {
         const locations = await userService.getAllLocations();
