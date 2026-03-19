@@ -15,6 +15,17 @@ const userService = {
         return locations;
     },
 
+    async getLocation(username) {
+        const { data, error } = await supabase
+            .from(TABLE_NAME)
+            .select('location')
+            .eq('user', username)
+            .single();
+        
+        if (error) throw error;
+        return data ? data.location : null;
+    },
+
     async updateLocation(username, location) {
         const { error } = await supabase
             .from(TABLE_NAME)

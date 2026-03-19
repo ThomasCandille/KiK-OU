@@ -13,6 +13,22 @@ router.get('/locations', async (req, res) => {
     }
 });
 
+router.get('/locations/:username', async (req, res) => {
+    try {
+        const { username } = req.params;
+        const location = await userService.getLocation(username);
+        
+        if (location) {
+            res.json({ user: username, location });
+        } else {
+            res.status(404).json({ error: 'User not found' });
+        }
+    } catch (error) {
+        console.error('API Error:', error);
+        res.status(500).json({ error: 'Failed to fetch location' });
+    }
+});
+
 router.post('/locations/:username', async (req, res) => {
     try {
         const { username } = req.params;
@@ -45,7 +61,7 @@ router.get('/axes', async (req, res) => {
     }
 });
 
-router.get('/users/axe/:axe', async (req, res) => {
+router.get('/users/:axe', async (req, res) => {
     try {
         const { axe } = req.params;
         const users = await userService.getUsersFromAxe(axe);
