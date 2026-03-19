@@ -54,6 +54,45 @@
             }
 }
 
+.profile-image-fallback {
+    width: 25%;
+    height: 100%;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--color);
+    border-right: 3px solid var(--color);
+    padding: 2.5%;
+
+    &.bureau {
+        color: var(--bureau-color);
+        border-color: var(--bureau-color);
+    }
+    &.crealab {
+        color: var(--crealab-color);
+        border-color: var(--crealab-color);
+    }
+    &.reunion {
+        color: var(--reunion-color);
+        border-color: var(--reunion-color);
+    }
+    &.teletravail {
+        color: var(--teletravail-color);
+        border-color: var(--teletravail-color);
+    }
+    &.absent {
+        color: var(--absent-color);
+        border-color: var(--absent-color);
+    }
+    &.inconnu {
+        color: var(--inconnu-color);
+        border-color: var(--inconnu-color);
+    }
+}
+
 .profile-details {
     text-align: left;
     height: 70%;
