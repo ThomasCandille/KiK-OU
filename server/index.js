@@ -1,11 +1,11 @@
-require('dotenv').config();
+import 'dotenv/config';
 import express, { json } from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
 
-import apiRoutes from './routes/api';
-import setupSocketHandlers from './handlers/socketHandlers';
+import apiRoutes from './routes/api.js';
+import setupSocketHandlers from './handlers/socketHandlers.js';
 
 const app = express();
 const server = createServer(app);
