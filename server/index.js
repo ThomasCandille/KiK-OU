@@ -1,15 +1,14 @@
 require('dotenv').config();
-const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
-const cors = require('cors');
+import express, { json } from 'express';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
+import cors from 'cors';
 
-const userService = require('./services/userService');
-const apiRoutes = require('./routes/api');
-const setupSocketHandlers = require('./handlers/socketHandlers');
+import apiRoutes from './routes/api';
+import setupSocketHandlers from './handlers/socketHandlers';
 
 const app = express();
-const server = http.createServer(app);
+const server = createServer(app);
 
 const port = process.env.PORT || 3001;
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -20,7 +19,7 @@ app.use(cors({
     origin: NODE_ENV === 'production' ? allowedOrigins : '*',
     credentials: true
 }));
-app.use(express.json());
+app.use(json());
 
 app.use((req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
