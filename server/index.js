@@ -4,7 +4,6 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 
-const userService = require('./services/userService');
 const apiRoutes = require('./routes/api');
 const setupSocketHandlers = require('./handlers/socketHandlers');
 
