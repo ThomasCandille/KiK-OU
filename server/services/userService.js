@@ -25,6 +25,17 @@ const userService = {
         return true;
     },
 
+    async getAxes() {
+        const { data, error } = await supabase
+            .from(TABLE_NAME)
+            .select('axe')
+            .not('axe', 'is', null);
+        
+        if (error) throw error;
+        
+        return [...new Set(data.map(row => row.axe))];
+    },
+
     async getUsersFromAxe(axe) {
         const { data, error } = await supabase
             .from(TABLE_NAME)

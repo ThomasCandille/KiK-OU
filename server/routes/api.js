@@ -35,4 +35,25 @@ router.post('/locations/:username', async (req, res) => {
     }
 });
 
+router.get('/axes', async (req, res) => {
+    try {
+        const axes = await userService.getAxes();
+        res.json(axes);
+    } catch (error) {
+        console.error('API Error:', error);
+        res.status(500).json({ error: 'Failed to fetch axes' });
+    }
+});
+
+router.get('/users/axe/:axe', async (req, res) => {
+    try {
+        const { axe } = req.params;
+        const users = await userService.getUsersFromAxe(axe);
+        res.json(users);
+    } catch (error) {
+        console.error('API Error:', error);
+        res.status(500).json({ error: 'Failed to fetch users' });
+    }
+});
+
 module.exports = router;
