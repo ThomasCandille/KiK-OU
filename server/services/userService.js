@@ -1,4 +1,4 @@
-const supabase = require('../config/database');
+import supabase from '../config/database';
 
 const TABLE_NAME = 'kikeou_db';
 
@@ -59,4 +59,4 @@ const userService = {
     }
 };
 
-module.exports = userService;
+export default userService;

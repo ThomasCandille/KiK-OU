@@ -1,11 +1,11 @@
-const express = require('express');
-const userService = require('../services/userService');
+import { Router } from 'express';
+import { getAllLocations, getLocation, updateLocation, getAxes, getUsersFromAxe } from '../services/userService';
 
-const router = express.Router();
+const router = Router();
 
 router.get('/locations', async (req, res) => {
     try {
-        const locations = await userService.getAllLocations();
+        const locations = await getAllLocations();
         res.json(locations);
     } catch (error) {
         console.error('API Error:', error);
@@ -16,7 +16,7 @@ router.get('/locations', async (req, res) => {
 router.get('/locations/:username', async (req, res) => {
     try {
         const { username } = req.params;
-        const location = await userService.getLocation(username);
+        const location = await getLocation(username);
         
         if (location) {
             res.json({ user: username, location });
@@ -38,7 +38,7 @@ router.post('/locations/:username', async (req, res) => {
             return res.status(400).json({ error: 'Location is required' });
         }
         
-        await userService.updateLocation(username, location);
+        await updateLocation(username, location);
         
         if (req.io) {
             req.io.emit('statusUpdated', { user: username, location });
@@ -53,7 +53,7 @@ router.post('/locations/:username', async (req, res) => {
 
 router.get('/axes', async (req, res) => {
     try {
-        const axes = await userService.getAxes();
+        const axes = await getAxes();
         res.json(axes);
     } catch (error) {
         console.error('API Error:', error);
@@ -64,7 +64,7 @@ router.get('/axes', async (req, res) => {
 router.get('/users/:axe', async (req, res) => {
     try {
         const { axe } = req.params;
-        const users = await userService.getUsersFromAxe(axe);
+        const users = await getUsersFromAxe(axe);
         res.json(users);
     } catch (error) {
         console.error('API Error:', error);
@@ -72,4 +72,4 @@ router.get('/users/:axe', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;
