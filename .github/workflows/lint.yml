@@ -30,7 +30,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: client
-        run: npm ci
+        run: npm install
 
       - name: Run lint
         working-directory: client
@@ -52,7 +52,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: server
-        run: npm ci
+        run: npm install
 
       - name: Run lint
         working-directory: server
