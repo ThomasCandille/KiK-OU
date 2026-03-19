@@ -1,11 +1,11 @@
-const userService = require('../services/userService');
+import { getAllLocations, updateLocation } from '../services/userService';
 
 const setupSocketHandlers = (io) => {
     io.on('connection', async (socket) => {
         console.log(`User connected: ${socket.id}`);
 
         try {
-            const locations = await userService.getAllLocations();
+            const locations = await getAllLocations();
             socket.emit('initialState', locations);
         } catch (error) {
             console.error('Socket connection error:', error);
@@ -21,7 +21,7 @@ const setupSocketHandlers = (io) => {
 
                 console.log(`Status update: ${data.user} -> ${data.location}`);
                 
-                await userService.updateLocation(data.user, data.location);
+                await updateLocation(data.user, data.location);
                 io.emit('statusUpdated', data);
                 
             } catch (error) {
@@ -36,4 +36,4 @@ const setupSocketHandlers = (io) => {
     });
 };
 
-module.exports = setupSocketHandlers;
+export default setupSocketHandlers;
