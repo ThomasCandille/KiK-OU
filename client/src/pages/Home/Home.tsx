@@ -1,61 +1,91 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Home.css';
-import { getAxes } from '../../services/api';
+import ProfileCard from '../../components/ProfileCard/ProfileCard';
+import { io } from 'socket.io-client';
+import { LocationState } from '../../components/Location/Location';
 
-function formatAxeLabel(axe: string): string {
-  return axe
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-}
+const socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:3001');
 
 function Home() {
-  const [axes, setAxes] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [userLocationDict, setUserLocationDict] = useState<{ [key: string]: LocationState }>({});
 
   useEffect(() => {
-    const loadAxes = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const axesPayload = await getAxes();
-        setAxes(axesPayload);
-      } catch (loadError) {
-        setError('Impossible de charger les axes.');
-      } finally {
-        setLoading(false);
-      }
-    };
+    socket.on('initialState', (data) => {
+      setUserLocationDict(data);
+    });
 
-    loadAxes();
+    socket.on('statusUpdated', (data) => {
+      setUserLocationDict(prev => ({
+        ...prev,
+        [data.user]: data.location
+      }));
+    });
+
+    return () => {
+      socket.off('initialState');
+      socket.off('statusUpdated');
+    };
   }, []);
 
   return (
-    <div className="home-page">
-      <header className="home-header">SÉLECTIONNER UN AXE</header>
-
-      {loading && <p className="home-info">Chargement des axes...</p>}
-      {error && <p className="home-info">{error}</p>}
-
-      {!loading && !error && (
-        <div className="axes-grid">
-          {axes.map(axe => (
-            <div key={axe} className="axe-card">
-              <h2>{formatAxeLabel(axe)}</h2>
-              <div className="axe-card-actions">
-                <Link to={`/view/${encodeURIComponent(axe)}`} className="axe-link">
-                  Voir les membres
-                </Link>
-                <Link to={`/user/${encodeURIComponent(axe)}`} className="axe-link">
-                  Mettre à jour
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+    <div className="App">
+      <header> PRESENCE DES MEMBRES DE L'EQUIPE </header>
+      <div className='profile-card-container'>
+        <ProfileCard
+          key={'orianne-pellois'}
+          imageUrl="/icon_orianne.svg"
+          name="Orianne PELLOIS"
+          role="Responsable d'axe"
+          location={userLocationDict['orianne-pellois']}
+          mail="orianne.pellois@devinci.fr"
+          teams="Orianne Pellois"
+        />
+        <ProfileCard
+          key={'pierrick-chevron'}
+          imageUrl="/icon_pierrick.svg"
+          name="Pierrick CHEVRON"
+          role="Professeur délégué"
+          location={userLocationDict['pierrick-chevron']}
+          mail="pierrick.chevron@devinci.fr"
+          teams="Pierrick Chevron"
+        />
+        <ProfileCard
+          key={'gabriel-monier'}
+          imageUrl="/icon_gabriel.svg"
+          name="Gabriel MONIER"
+          role="Professeur délégué"
+          location={userLocationDict['gabriel-monier']}
+          mail="gabriel.monier@devinci.fr"
+          teams="Gabriel Monier"
+        />
+        <ProfileCard
+          key={'sofy-yuditskaya'}
+          imageUrl="/icon_sofy.svg"
+          name="Sofy YUDITSKAYA"
+          role="Enseignante-chercheuse"
+          location={userLocationDict['sofy-yuditskaya']}
+          mail="sofy.yuditskaya@devinci.fr"
+          teams="Sofy Yuditskaya"
+        />
+        <ProfileCard
+          key={'silamakan-toure'}
+          imageUrl="/icon_sila.svg"
+          name="Silamakan TOURE"
+          role="coordinateur pédagogique"
+          location={userLocationDict['silamakan-toure']}
+          mail="silamakan.toure@devinci.fr"
+          teams="Silamakan Toure"
+        />
+        <ProfileCard
+          key={'thomas-candille'}
+          imageUrl="/icon_thomas.svg"
+          name="Thomas CANDILLE"
+          role="Alernant"
+          location={userLocationDict['thomas-candille']}
+          mail="thomas.candille@devinci.fr"
+          teams="Thomas Candille"
+        />
+      </div>
     </div>
   );
 }
