@@ -23,6 +23,17 @@ const userService = {
         
         if (error) throw error;
         return true;
+    },
+
+    async getUsersFromAxe(axe) {
+        const { data, error } = await supabase
+            .from(TABLE_NAME)
+            .select('user')
+            .eq('axe', axe);
+        
+        if (error) throw error;
+        
+        return data.map(row => row.user);
     }
 };
 
