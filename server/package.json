@@ -4,7 +4,7 @@
   "description": "KiKéOU Socket.IO server",
   "license": "ISC",
   "author": "Thomas Candille",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "engines": {
     "node": ">=16.0.0"
