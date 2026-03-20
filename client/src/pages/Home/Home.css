@@ -8,18 +8,28 @@
     background-color: var(--background);
 
     header{
+
+        h1,p{
+            color: var(--color);   
+            text-align: center;
+            font-size: 28px;
+        }
+
+        select{
+            background-color: transparent;
+            border: none;
+            font-size: 28px;
+            color: var(--color);
+            cursor: pointer;
+        }
+
+
         height: 8%;
 
         display: flex;
         justify-content: center;
         align-items: center;
-
         border : 5px solid var(--color);
-
-        color: var(--color);   
-        text-align: center;
-        font-size: 28px;
-
         margin-bottom: 10px;
     }
         
