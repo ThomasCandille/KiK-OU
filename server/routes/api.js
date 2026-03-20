@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getAllLocations, getLocation, updateLocation, getAxes, getUsersFromAxe } from '../services/userService';
+import { getAllLocations, getLocation, updateLocation, getAxes, getUsersFromAxe } from '../services/userService.js';
 
 const router = Router();
 

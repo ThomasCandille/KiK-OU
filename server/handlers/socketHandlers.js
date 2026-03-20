@@ -1,4 +1,4 @@
-import { getAllLocations, updateLocation } from '../services/userService';
+import { getAllLocations, updateLocation } from '../services/userService.js';
 
 const setupSocketHandlers = (io) => {
     io.on('connection', async (socket) => {
