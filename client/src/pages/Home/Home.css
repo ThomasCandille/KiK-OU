@@ -32,13 +32,27 @@
         border : 5px solid var(--color);
         margin-bottom: 10px;
     }
-        
+
     .profile-card-container {
         height: 85%;
-
         display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+
+    .profile-card {
+        height: 100%;
+    }
+
+    .profile-card-container.compact-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+    }
+
+    .profile-card-container.wide-layout {
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
+    }
+
+    .profile-card-item.last-full-line {
+        grid-column: 1 / -1;
     }
 }

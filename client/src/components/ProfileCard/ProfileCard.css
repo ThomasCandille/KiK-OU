@@ -27,6 +27,7 @@
 
 .profile-image {
     width: 25%;
+    max-width: 125px;
     height: auto;
     object-fit: cover;
     flex-shrink: 0;
@@ -65,7 +66,7 @@
         flex-grow: 1;
 
         .profile-name {
-            font-size: 16px;
+            font-size: 2rem;
             font-weight: 700;
             letter-spacing: 2px;
             color: var(--color);

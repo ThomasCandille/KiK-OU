@@ -15,7 +15,7 @@ interface ProfileCardProps {
 const ProfileCard = ({ imageUrl, name, role, location, mail }: ProfileCardProps) => {
     return (
         <div className={`profile-card ${location}`}>
-            <img src={imageUrl} alt={`${name}'s profile`} className={`profile-image ${location}`} />
+            <img src={"/icon.svg"} alt={`${name}'s profile`} className={`profile-image ${location}`}/>
                 <div className="profile-details">
                     <div className='profile-container'>
                         <h2 className={`profile-name ${location}`}>{name}</h2>

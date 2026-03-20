@@ -20,6 +20,9 @@ function Home() {
   const [userLocationDict, setUserLocationDict] = useState<{ [key: string]: LocationState }>({});
   const [axes, setAxes] = useState<string[]>([]);
   const [usersFromAxe, setUsersFromAxe] = useState<string[]>([]);
+  const displayedUsers = usersFromAxe;
+  const displayedCount = displayedUsers.length;
+  const isCompactLayout = displayedCount <= 3;
 
   const handleAxeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedAxe = event.target.value;
@@ -70,19 +73,23 @@ function Home() {
           ))}
         </select>
       </header>
-      <div className='profile-card-container'>
+      <div className={`profile-card-container ${isCompactLayout ? 'compact-layout' : 'wide-layout'}`}>
 
-          {usersFromAxe.length > 0 ? (
-            usersFromAxe.map(user => (
-              <ProfileCard
+          {displayedCount > 0 ? (
+            displayedUsers.map((user, index) => (
+              <div
                 key={user}
-                imageUrl={`/icon_${user.split(' ').join('-').toLowerCase()}.svg`}
-                name={user}
-                role="Membre de l'équipe"
-                location={userLocationDict[user]}
-                mail={`${user.replace(' ', '.')}@devinci.fr`}
-                teams={user}
-              />
+                className={`profile-card-item ${!isCompactLayout && displayedCount % 2 !== 0 && index === displayedCount - 1 ? 'last-full-line' : ''}`}
+              >
+                <ProfileCard
+                  imageUrl={`/icon_${user.split(' ').join('-').toLowerCase()}.svg`}
+                  name={user}
+                  role="Membre de l'équipe"
+                  location={userLocationDict[user]}
+                  mail={`${user.replace(' ', '.')}@devinci.fr`}
+                  teams={user}
+                />
+              </div>
             ))
           ) : (
             <p>Aucun utilisateur trouvé pour cet axe.</p>
