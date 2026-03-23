@@ -79,7 +79,7 @@ function Home() {
             displayedUsers.map((user, index) => (
               <div
                 key={user}
-                className={`profile-card-item ${!isCompactLayout && displayedCount % 2 !== 0 && index === displayedCount - 1 ? 'last-full-line' : ''}`}
+                className={`profile-card-item ${!isCompactLayout && displayedCount % 2 === 0 && index === 0 ? 'first-full-line' : ''}`}
               >
                 <ProfileCard
                   name={user}
