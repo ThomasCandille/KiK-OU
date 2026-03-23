@@ -66,7 +66,7 @@
         flex-grow: 1;
 
         .profile-name {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: 2px;
             color: var(--color);
