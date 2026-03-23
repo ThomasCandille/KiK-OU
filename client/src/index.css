@@ -71,6 +71,6 @@ body {
   height: 100vh;
 }
 
-body, input, button, header, span, p {
+body, input, button, header, span, p, select {
   font-family: 'monofonto', sans-serif;
 }
