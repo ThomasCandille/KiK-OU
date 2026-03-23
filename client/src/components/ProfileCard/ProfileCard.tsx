@@ -4,15 +4,11 @@ import { LocationState } from '../Location/Location';
 import Location from '../Location/Location';
 
 interface ProfileCardProps {
-    imageUrl: string;
     name: string;
-    role: string;
     location: LocationState;
-    mail:string;
-    teams:string;
 }
 
-const ProfileCard = ({ imageUrl, name, role, location, mail }: ProfileCardProps) => {
+const ProfileCard = ({ name, location }: ProfileCardProps) => {
     return (
         <div className={`profile-card ${location}`}>
             <img src={"/icon.svg"} alt={`${name}'s profile`} className={`profile-image ${location}`}/>

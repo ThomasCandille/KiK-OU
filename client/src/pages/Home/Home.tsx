@@ -82,12 +82,8 @@ function Home() {
                 className={`profile-card-item ${!isCompactLayout && displayedCount % 2 !== 0 && index === displayedCount - 1 ? 'last-full-line' : ''}`}
               >
                 <ProfileCard
-                  imageUrl={`/icon_${user.split(' ').join('-').toLowerCase()}.svg`}
                   name={user}
-                  role="Membre de l'équipe"
                   location={userLocationDict[user]}
-                  mail={`${user.replace(' ', '.')}@devinci.fr`}
-                  teams={user}
                 />
               </div>
             ))
