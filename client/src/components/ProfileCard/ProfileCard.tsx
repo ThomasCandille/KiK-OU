@@ -14,7 +14,7 @@ const ProfileCard = ({ name, location }: ProfileCardProps) => {
             <img src={"/icon.svg"} alt={`${name}'s profile`} className={`profile-image ${location}`}/>
                 <div className="profile-details">
                     <div className='profile-container'>
-                        <h2 className={`profile-name ${location}`}>{name}</h2>
+                        <h2 className={`profile-name ${location}`}>{name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h2>
                     </div>
                     <div className="location">
                         <Location locationState={location} />

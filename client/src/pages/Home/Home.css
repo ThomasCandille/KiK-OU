@@ -50,6 +50,7 @@
 
     .profile-card-container.wide-layout {
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(2, minmax(0, 1fr));
     }
 
     .profile-card-item.last-full-line {
