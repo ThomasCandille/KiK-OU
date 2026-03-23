@@ -1,6 +1,7 @@
 .App{
     margin: 0;
     padding: 10px;
+    padding-inline: 40px;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
