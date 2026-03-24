@@ -8,11 +8,11 @@ interface LocationProps {
 }
 
 const locationTextMap: { [key in NonNullable<LocationProps['locationState']>]: string } = {
-    bureau: "Présent",
-    crealab: "CreaLab",
+    bureau: "Au Bureau",
+    crealab: "Au CreaLab",
     reunion: "En réunion",
-    teletravail: "Télétravail",
-    absent: "Absent",
+    teletravail: "En télétravail",
+    absent: "En repos",
     inconnu: "Inconnu"
 };
 
