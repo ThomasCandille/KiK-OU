@@ -15,17 +15,21 @@ type UsersFromAxePayload = {
   users: string[];
 };
 
-function Home() {
+type HomeProps = {
+  onSelectedAxeChange: (axe: string) => void;
+};
+
+function Home({ onSelectedAxeChange }: HomeProps) {
 
   const [userLocationDict, setUserLocationDict] = useState<{ [key: string]: LocationState }>({});
   const [axes, setAxes] = useState<string[]>([]);
   const [usersFromAxe, setUsersFromAxe] = useState<string[]>([]);
-  const displayedUsers = usersFromAxe;
-  const displayedCount = displayedUsers.length;
+  const displayedCount = usersFromAxe.length;
   const isCompactLayout = displayedCount <= 3;
 
   const handleAxeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedAxe = event.target.value;
+    onSelectedAxeChange(selectedAxe);
     if (selectedAxe) {
       socket.emit('axeChange', selectedAxe);
     } else {
@@ -59,7 +63,7 @@ function Home() {
       socket.off('statusUpdated', handleStatusUpdated);
       socket.off('usersFromAxe', handleUsersFromAxe);
     };
-  }, []);
+  }, [onSelectedAxeChange]);
 
   return (
     <div className="App">
@@ -76,7 +80,7 @@ function Home() {
       <div className={`profile-card-container ${isCompactLayout ? 'compact-layout' : 'wide-layout'}`}>
 
           {displayedCount > 0 ? (
-            displayedUsers.map((user, index) => (
+            usersFromAxe.map((user, index) => (
               <div
                 key={user}
                 className={`profile-card-item ${!isCompactLayout && displayedCount % 2 !== 0 && index === 0 ? 'full-line' : ''}`}

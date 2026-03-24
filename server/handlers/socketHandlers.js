@@ -1,5 +1,7 @@
 import { getAllLocations, updateLocation, getAxes, getUsersFromAxe } from '../services/userService.js';
 
+const darkenedAxes = new Set();
+
 const setupSocketHandlers = (io) => {
     io.on('connection', async (socket) => {
         console.log(`User connected: ${socket.id}`);
@@ -7,7 +9,7 @@ const setupSocketHandlers = (io) => {
         try {
             const locations = await getAllLocations();
             const axes = await getAxes();
-            socket.emit('initialState', { locations, axes });
+            socket.emit('initialState', { locations, axes, darkenedAxes: [...darkenedAxes] });
         } catch (error) {
             console.error('Socket connection error:', error);
             socket.emit('error', { message: 'Failed to load initial data' });
@@ -41,6 +43,17 @@ const setupSocketHandlers = (io) => {
                 console.error('Axe change error:', error);
                 socket.emit('error', { message: 'Failed to load users for selected axe' });
             }
+        });
+
+        socket.on('darkenAxe', (axe) => {
+            if (!axe || typeof axe !== 'string') {
+                socket.emit('error', { message: 'Invalid axe to darken' });
+                return;
+            }
+
+            darkenedAxes.has(axe) ? darkenedAxes.delete(axe) : darkenedAxes.add(axe);
+
+            io.emit('darkenedAxesUpdated', { darkenedAxes: [...darkenedAxes] });
         });
 
         socket.on('disconnect', () => {

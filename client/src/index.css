@@ -74,3 +74,12 @@ body {
 body, input, button, header, span, p, select {
   font-family: 'monofonto', sans-serif;
 }
+
+.root-app {
+	width: 100vw;
+	height: 100vh;
+}
+
+.root-app.darkened-axe {
+	filter: brightness(20%);
+}
