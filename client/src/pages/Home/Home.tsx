@@ -21,9 +21,22 @@ type HomeProps = {
 
 function Home({ onSelectedAxeChange }: HomeProps) {
 
+  const formatCurrentDateTime = (date: Date) =>
+    date.toLocaleString('fr-FR', {
+      dateStyle: 'short',
+      timeStyle: 'medium'
+    });
+
+  const formatLastChangeTime = (date: Date) =>
+    date.toLocaleTimeString('fr-FR');
+
   const [userLocationDict, setUserLocationDict] = useState<{ [key: string]: LocationState }>({});
   const [axes, setAxes] = useState<string[]>([]);
   const [usersFromAxe, setUsersFromAxe] = useState<string[]>([]);
+  const [currentDateTime, setCurrentDateTime] = useState<string>(
+    formatCurrentDateTime(new Date())
+  );
+  const [lastChangeTime, setLastChangeTime] = useState<string | null>(null);
   const displayedCount = usersFromAxe.length;
   const isCompactLayout = displayedCount <= 3;
 
@@ -38,6 +51,14 @@ function Home({ onSelectedAxeChange }: HomeProps) {
   };
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDateTime(formatCurrentDateTime(new Date()));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     const handleInitialState = ({ locations, axes }: InitialStatePayload) => {
       setUserLocationDict(locations);
       setAxes(axes);
@@ -48,6 +69,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
         ...prev,
         [data.user]: data.location
       }));
+      setLastChangeTime(formatLastChangeTime(new Date()));
     };
 
     const handleUsersFromAxe = ({ users }: UsersFromAxePayload) => {
@@ -76,6 +98,11 @@ function Home({ onSelectedAxeChange }: HomeProps) {
             <option key={axe} value={axe}>{axe}</option>
           ))}
         </select>
+        <p> - </p>
+          <p>
+            {currentDateTime} - Dernier changement :{' '}
+            {lastChangeTime ? lastChangeTime : 'Aucun changement'}
+          </p>
       </header>
       <div className={`profile-card-container ${isCompactLayout ? 'compact-layout' : 'wide-layout'}`}>
 
