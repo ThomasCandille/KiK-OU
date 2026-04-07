@@ -28,10 +28,9 @@
 .profile-image {
     width: 25%;
     max-width: 125px;
-    height: auto;
     object-fit: cover;
     flex-shrink: 0;
-    padding: 2.5%;
+    margin: 2.5%;
     border-right: 3px solid var(--color);
     
             
