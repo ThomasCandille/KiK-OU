@@ -10,23 +10,23 @@
 
     header{
 
-        h1,p{
+        p{
             color: var(--color);   
             text-align: center;
-            font-size: 28px;
+            font-size: 26px;
         }
 
         select{
             background-color: transparent;
             border: none;
-            font-size: 28px;
+            font-size: 26px;
             color: var(--color);
             cursor: pointer;
         }
 
 
         height: 8%;
-
+        padding-inline: 8px;
         display: flex;
         justify-content: center;
         align-items: center;
