@@ -90,7 +90,11 @@ function Home({ onSelectedAxeChange }: HomeProps) {
   return (
     <div className="App">
       <header> 
-        <h1>PRESENCE DES MEMBRES DE L'EQUIPE</h1>
+        <p>
+            {currentDateTime}
+          </p>
+        <p> - </p>
+        <p>PRESENCES DES MEMBRES DE L'EQUIPE</p>
         <p> - </p>
         <select onChange={handleAxeChange}>
           <option value="">Filtrer par axe</option>
@@ -100,8 +104,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
         </select>
         <p> - </p>
           <p>
-            {currentDateTime} - Dernier changement :{' '}
-            {lastChangeTime ? lastChangeTime : 'Aucun changement'}
+            Dernier changement :{' '}{lastChangeTime ? lastChangeTime : 'Aucun changement'}
           </p>
       </header>
       <div className={`profile-card-container ${isCompactLayout ? 'compact-layout' : 'wide-layout'}`}>

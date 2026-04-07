@@ -58,3 +58,14 @@
     }
 
 }
+@media (max-width: 1200px) {
+    .App {
+        header {
+            h1,
+            p,
+            select {
+                font-size: 18px;
+            }
+        }
+    }
+}
