@@ -30,7 +30,7 @@
     max-width: 125px;
     object-fit: cover;
     flex-shrink: 0;
-    margin: 2.5%;
+    padding: 2.5%;
     border-right: 3px solid var(--color);
     
             
