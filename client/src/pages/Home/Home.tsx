@@ -3,6 +3,7 @@ import './Home.css';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
 import { io } from 'socket.io-client';
 import { LocationState } from '../../components/Location/Location';
+import LocationModal from '../../components/LocationModal/LocationModal';
 
 const socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:3001');
 
@@ -37,6 +38,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
     formatCurrentDateTime(new Date())
   );
   const [lastChangeTime, setLastChangeTime] = useState<string | null>(null);
+  const [selectedUser, setSelectedUser] = useState<string | null>(null);
   const displayedCount = usersFromAxe.length;
   const isCompactLayout = displayedCount <= 3;
 
@@ -87,6 +89,23 @@ function Home({ onSelectedAxeChange }: HomeProps) {
     };
   }, [onSelectedAxeChange]);
 
+  const closeLocationModal = () => {
+    setSelectedUser(null);
+  };
+
+  const handleLocationSelect = (location: Exclude<LocationState, 'inconnu'>) => {
+    if (!selectedUser) {
+      return;
+    }
+
+    socket.emit('statusUpdate', {
+      user: selectedUser,
+      location
+    });
+
+    closeLocationModal();
+  };
+
   return (
     <div className="App">
       <header> 
@@ -121,6 +140,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
                 <ProfileCard
                   name={user}
                   location={userLocationDict[user]}
+                  onClick={() => setSelectedUser(user)}
                 />
               </div>
             ))
@@ -128,6 +148,13 @@ function Home({ onSelectedAxeChange }: HomeProps) {
             <p>Aucun utilisateur trouvé pour cet axe.</p>
           )}
         </div>
+      <LocationModal
+        isOpen={Boolean(selectedUser)}
+        user={selectedUser}
+        currentLocation={selectedUser ? userLocationDict[selectedUser] : 'inconnu'}
+        onClose={closeLocationModal}
+        onSelectLocation={handleLocationSelect}
+      />
     </div>
         
   );

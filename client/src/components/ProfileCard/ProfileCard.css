@@ -25,6 +25,15 @@
             }
 }
 
+.profile-card.clickable {
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.profile-card.clickable:hover {
+    transform: translateY(-2px);
+}
+
 .profile-image {
     width: 25%;
     max-width: 125px;

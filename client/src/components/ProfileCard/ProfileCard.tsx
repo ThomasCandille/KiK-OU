@@ -6,11 +6,15 @@ import Location from '../Location/Location';
 interface ProfileCardProps {
     name: string;
     location: LocationState;
+    onClick?: () => void;
 }
 
-const ProfileCard = ({ name, location }: ProfileCardProps) => {
+const ProfileCard = ({ name, location, onClick }: ProfileCardProps) => {
     return (
-        <div className={`profile-card ${location}`}>
+        <div
+            className={`profile-card ${location} ${onClick ? 'clickable' : ''}`}
+            onClick={onClick}
+        >
             <img src={"/icon.svg"} alt={`${name}'s profile`} className={`profile-image ${location}`}/>
                 <div className="profile-details">
                     <div className='profile-container'>
