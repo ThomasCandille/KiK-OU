@@ -59,10 +59,22 @@ export async function getUsersFromAxe(axe) {
     return data.map(row => row.user);
 }
 
+export async function getRole(username) {
+    const { data, error } = await supabase
+        .from(TABLE_NAME)
+        .select('role')
+        .eq('user', username)
+        .single();
+
+    if (error) throw error;
+    return data ? data.role : null;
+}
+
 export default {
     getAllLocations,
     getLocation,
     updateLocation,
     getAxes,
-    getUsersFromAxe
+    getUsersFromAxe,
+    getRole
 };

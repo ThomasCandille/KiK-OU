@@ -99,6 +99,31 @@
                 color: var(--inconnu-color);
             }
         }
+
+        .profile-role {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--color);
+            
+            &.bureau {
+                color: var(--bureau-color);
+            }
+            &.crealab {
+                color: var(--crealab-color);
+            }
+            &.reunion {
+                color: var(--reunion-color);
+            }
+            &.teletravail {
+                color: var(--teletravail-color);
+            }
+            &.absent {
+                color: var(--absent-color);
+            }
+            &.inconnu {
+                color: var(--inconnu-color);
+            }
+        }
     }
 }
 
@@ -107,6 +132,9 @@
         .profile-container {
             .profile-name {
                 font-size: 1.6rem;
+            }
+            .profile-role {
+                font-size: 1rem;
             }
         }
     }

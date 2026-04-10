@@ -1,4 +1,4 @@
-import { getAllLocations, updateLocation, getAxes, getUsersFromAxe } from '../services/userService.js';
+import { getAllLocations, updateLocation, getAxes, getUsersFromAxe, getRole } from '../services/userService.js';
 
 const darkenedAxes = new Set();
 
@@ -37,8 +37,13 @@ const setupSocketHandlers = (io) => {
             try {
                 console.log(`Axe change requested: ${axe}`);
                 const users = await getUsersFromAxe(axe);
+                const roles = await Promise.all(users.map(async (user) => {
+                    const role = await getRole(user);
+                    return { user, role };
+                }));
+
                 console.log(`Users from axe ${axe}:`, users);
-                socket.emit('usersFromAxe', { users });
+                socket.emit('usersFromAxe', { users, roles });
             } catch (error) {
                 console.error('Axe change error:', error);
                 socket.emit('error', { message: 'Failed to load users for selected axe' });

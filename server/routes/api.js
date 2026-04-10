@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getAllLocations, getLocation, updateLocation, getAxes, getUsersFromAxe } from '../services/userService.js';
+import { getAllLocations, getLocation, updateLocation, getAxes, getUsersFromAxe, getRole } from '../services/userService.js';
 
 const router = Router();
 
@@ -69,6 +69,22 @@ router.get('/users/:axe', async (req, res) => {
     } catch (error) {
         console.error('API Error:', error);
         res.status(500).json({ error: 'Failed to fetch users' });
+    }
+});
+
+router.get('/roles/:username', async (req, res) => {
+    try {
+        const { username } = req.params;
+        const role = await getRole(username);
+        
+        if (role) {
+            res.json({ user: username, role });
+        } else {
+            res.status(404).json({ error: 'User not found' });
+        }
+    } catch (error) {
+        console.error('API Error:', error);
+        res.status(500).json({ error: 'Failed to fetch role' });
     }
 });
 

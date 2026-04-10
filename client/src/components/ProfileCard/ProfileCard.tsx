@@ -6,10 +6,11 @@ import Location from '../Location/Location';
 interface ProfileCardProps {
     name: string;
     location: LocationState;
+    role?: string;
     onClick?: () => void;
 }
 
-const ProfileCard = ({ name, location, onClick }: ProfileCardProps) => {
+const ProfileCard = ({ name, location, role, onClick }: ProfileCardProps) => {
     return (
         <div
             className={`profile-card ${location} ${onClick ? 'clickable' : ''}`}
@@ -19,6 +20,7 @@ const ProfileCard = ({ name, location, onClick }: ProfileCardProps) => {
                 <div className="profile-details">
                     <div className='profile-container'>
                         <h2 className={`profile-name ${location}`}>{name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h2>
+                        {role && <p className={`profile-role ${location}`}>{role}</p>}
                     </div>
                     <div className="location">
                         <Location locationState={location} />

@@ -32,6 +32,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
     date.toLocaleTimeString('fr-FR');
 
   const [userLocationDict, setUserLocationDict] = useState<{ [key: string]: LocationState }>({});
+  const [userRoles, setUserRoles] = useState<{ [key: string]: string }>({});
   const [axes, setAxes] = useState<string[]>([]);
   const [usersFromAxe, setUsersFromAxe] = useState<string[]>([]);
   const [currentDateTime, setCurrentDateTime] = useState<string>(
@@ -74,8 +75,9 @@ function Home({ onSelectedAxeChange }: HomeProps) {
       setLastChangeTime(formatLastChangeTime(new Date()));
     };
 
-    const handleUsersFromAxe = ({ users }: UsersFromAxePayload) => {
+    const handleUsersFromAxe = ({ users, roles }: { users: string[]; roles: { user: string; role: string }[] }) => {
       setUsersFromAxe(users);
+      setUserRoles(roles.reduce((acc, { user, role }) => ({ ...acc, [user]: role }), {}));
     };
 
     socket.on('initialState', handleInitialState);
@@ -140,6 +142,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
                 <ProfileCard
                   name={user}
                   location={userLocationDict[user]}
+                  role={userRoles[user]}
                   onClick={() => setSelectedUser(user)}
                 />
               </div>
