@@ -60,14 +60,23 @@ export async function getUsersFromAxe(axe) {
 }
 
 export async function getRole(username) {
-    const { data, error } = await supabase
-        .from(TABLE_NAME)
-        .select('role')
-        .eq('user', username)
-        .single();
+    try {
+        const { data, error } = await supabase
+            .from(TABLE_NAME)
+            .select('role')
+            .eq('user', username)
+            .single();
 
-    if (error) throw error;
-    return data ? data.role : null;
+        if (error) {
+            // If no row found or other query error, return null instead of throwing
+            console.warn(`Could not fetch role for user ${username}:`, error.message);
+            return null;
+        }
+        return data && data.role ? data.role : null;
+    } catch (e) {
+        console.warn(`Error fetching role for user ${username}:`, e.message);
+        return null;
+    }
 }
 
 export default {
