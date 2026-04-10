@@ -102,19 +102,8 @@
     }
 }
 
-.location {
-    width: 90%;
-    display: flex;
-    justify-content: flex-end;
-    font-size: 18px;
-    font-weight: 700;
-}
-
 @media only screen and (max-width: 1200px) {
-    .profile-name {
+    .profile-details & .profile-container &.profile-name {
         font-size: 12px;
     }
-    .location {
-        font-size: 10px;
-    }   
 }

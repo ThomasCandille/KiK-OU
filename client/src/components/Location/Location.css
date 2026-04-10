@@ -76,3 +76,9 @@
         border-bottom-color: var(--inconnu-color);
     }
 }
+
+@media only screen and (max-width: 1200px) {
+    .location-text {
+        font-size: 1.2em;
+    }
+}
