@@ -59,22 +59,33 @@ export async function getUsersFromAxe(axe) {
     return data.map(row => row.user);
 }
 
-export async function getRole(username) {
+export async function getRole(username, axe) {
     try {
-        const { data, error } = await supabase
+        let query = supabase
             .from(TABLE_NAME)
             .select('role')
-            .eq('user', username)
-            .single();
+            .eq('user', username);
+        
+        // If axe is provided, filter by both user and axe for more specific role
+        if (axe) {
+            query = query.eq('axe', axe);
+        }
+        
+        const { data, error } = await query.limit(1);
 
         if (error) {
-            // If no row found or other query error, return null instead of throwing
-            console.warn(`Could not fetch role for user ${username}:`, error.message);
+            console.warn(`Could not fetch role for user ${username}${axe ? ` on axe ${axe}` : ''}:`, error.message);
             return null;
         }
-        return data && data.role ? data.role : null;
+        
+        // Handle case where no rows were found or role column doesn't exist
+        if (!data || data.length === 0) {
+            return null;
+        }
+        
+        return data[0].role || null;
     } catch (e) {
-        console.warn(`Error fetching role for user ${username}:`, e.message);
+        console.warn(`Error fetching role for user ${username}${axe ? ` on axe ${axe}` : ''}:`, e.message);
         return null;
     }
 }

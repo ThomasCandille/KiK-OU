@@ -38,7 +38,7 @@ const setupSocketHandlers = (io) => {
                 console.log(`Axe change requested: ${axe}`);
                 const users = await getUsersFromAxe(axe);
                 const roles = await Promise.all(users.map(async (user) => {
-                    const role = await getRole(user);
+                    const role = await getRole(user, axe);
                     return { user, role };
                 }));
 
