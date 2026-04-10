@@ -112,19 +112,9 @@
 
 @media (max-width: 1200px) {
     .profile-name {
-        font-size: 22px;
+        font-size: 2px;
     }
     .location {
-        font-size: 16px;
+        font-size: 1px;
     }   
-}
-
-@media (max-width: 1000px) {
-    .profile-name {
-        font-size: 16px;
-    }
-    .location {
-        font-size: 14px;
-    }
-    
 }
