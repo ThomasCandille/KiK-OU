@@ -76,8 +76,13 @@ function Home({ onSelectedAxeChange }: HomeProps) {
     };
 
     const handleUsersFromAxe = ({ users, roles }: { users: string[]; roles: { user: string; role: string }[] }) => {
-      setUsersFromAxe(users);
-      setUserRoles(roles.reduce((acc, { user, role }) => ({ ...acc, [user]: role }), {}));
+      const roleByUser = roles.reduce((acc, { user, role }) => ({ ...acc, [user]: role }), {} as { [key: string]: string });
+      const priorityUser = users.find(user => roleByUser[user] === "Responsable d'axe");
+      const orderedUsers = priorityUser ? [priorityUser, ...users.filter(user => user !== priorityUser)] : users;
+
+      setUsersFromAxe(orderedUsers);
+      setUserRoles(roleByUser);
+
     };
 
     socket.on('initialState', handleInitialState);
