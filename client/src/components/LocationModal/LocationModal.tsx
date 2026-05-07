@@ -40,11 +40,11 @@ const LocationModal = ({ isOpen, user, currentLocation = 'inconnu', selectedAxe 
 
   const axePinCodes: { [key: string]: string } = {
     'CDI': '1111',
-    'crealab': '2222',
-    'reunion': '3333'
+    'B1Paris': '2222',
+    'B1Nantes': '3333'
   };
 
-  const pinCode = selectedAxe && axePinCodes[selectedAxe] ? axePinCodes[selectedAxe] : '1234';
+  const pinCode = selectedAxe && axePinCodes[selectedAxe] ? axePinCodes[selectedAxe] : '6767';
 
   useEffect(() => {
     return () => {
@@ -69,7 +69,7 @@ const LocationModal = ({ isOpen, user, currentLocation = 'inconnu', selectedAxe 
 
     unlockTimeoutRef.current = window.setTimeout(() => {
       lockPin();
-    }, 30000);
+    }, 15000);
   };
 
   const handleDigitClick = (digit: string) => {
