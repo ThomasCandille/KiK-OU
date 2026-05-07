@@ -23,6 +23,12 @@
             &.inconnu {
                 border-color: var(--inconnu-color);
             }
+            &.studio_fond_vert {
+                border-color: var(--studio-fond-vert-color);
+            }
+            &.studio_podcast {
+                border-color: var(--studio-podcast-color);
+            }
 }
 
 .profile-card.clickable {
@@ -61,6 +67,12 @@
             &.inconnu {
                 border-color: var(--inconnu-color);
             }
+            &.studio_fond_vert {
+                border-color: var(--studio-fond-vert-color);
+            }
+            &.studio_podcast {
+                border-color: var(--studio-podcast-color);
+            }
 }
 
 .profile-details {
@@ -98,6 +110,13 @@
             &.inconnu {
                 color: var(--inconnu-color);
             }
+            &.studio_fond_vert {
+                color: var(--studio-fond-vert-color);
+            }
+            &.studio_podcast {
+                color: var(--studio-podcast-color);
+            }
+
         }
 
         .profile-role {
@@ -123,6 +142,13 @@
             &.inconnu {
                 color: var(--inconnu-color);
             }
+            &.studio_fond_vert {
+                color: var(--studio-fond-vert-color);
+            }
+            &.studio_podcast {
+                color: var(--studio-podcast-color);
+            }
+
         }
     }
 }

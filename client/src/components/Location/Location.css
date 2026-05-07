@@ -22,6 +22,12 @@
     &.inconnu {
         border-color: var(--inconnu-color);
     }
+    &.studio_fond_vert {
+        border-color: var(--studio-fond-vert-color);
+    }
+    &.studio_podcast {
+        border-color: var(--studio-podcast-color);
+    }
 }
 
 .location-text {
@@ -46,6 +52,12 @@
     }
     &.inconnu {
         color: var(--inconnu-color);
+    }
+    &.studio_fond_vert {
+        color: var(--studio-fond-vert-color);
+    }
+    &.studio_podcast {
+        color: var(--studio-podcast-color);
     }
 
     &:after {
@@ -75,6 +87,13 @@
     &.inconnu:after {
         border-bottom-color: var(--inconnu-color);
     }
+    &.studio_fond_vert:after {
+        border-bottom-color: var(--studio-fond-vert-color);
+    }
+    &.studio_podcast:after {
+        border-bottom-color: var(--studio-podcast-color);
+    }
+
 }
 
 @media only screen and (max-width: 1200px) {

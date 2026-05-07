@@ -70,3 +70,18 @@
   border-color: var(--absent-color);
   color: var(--absent-color);
 }
+
+.location-option.inconnu {
+  border-color: var(--inconnu-color);
+  color: var(--inconnu-color);
+}
+
+.location-option.studio_fond_vert {
+  border-color: var(--studio-fond-vert-color);
+  color: var(--studio-fond-vert-color);
+}
+
+.location-option.studio_podcast {
+  border-color: var(--studio-podcast-color);
+  color: var(--studio-podcast-color);
+}
