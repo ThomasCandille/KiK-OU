@@ -36,14 +36,16 @@ function Home({ onSelectedAxeChange }: HomeProps) {
   );
   const [lastChangeTime, setLastChangeTime] = useState<string | null>(null);
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
+  const [selectedAxe, setSelectedAxe] = useState<string>('');
   const displayedCount = usersFromAxe.length;
   const isCompactLayout = displayedCount <= 3;
 
   const handleAxeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedAxe = event.target.value;
-    onSelectedAxeChange(selectedAxe);
-    if (selectedAxe) {
-      socket.emit('axeChange', selectedAxe);
+    const axe = event.target.value;
+    setSelectedAxe(axe);
+    onSelectedAxeChange(axe);
+    if (axe) {
+      socket.emit('axeChange', axe);
     } else {
       setUsersFromAxe([]);
     }
@@ -156,6 +158,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
         isOpen={Boolean(selectedUser)}
         user={selectedUser}
         currentLocation={selectedUser ? userLocationDict[selectedUser] : 'inconnu'}
+        selectedAxe={selectedAxe}
         onClose={closeLocationModal}
         onSelectLocation={handleLocationSelect}
       />
