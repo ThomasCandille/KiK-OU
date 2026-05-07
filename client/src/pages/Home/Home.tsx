@@ -12,10 +12,6 @@ type InitialStatePayload = {
   axes: string[];
 };
 
-type UsersFromAxePayload = {
-  users: string[];
-};
-
 type HomeProps = {
   onSelectedAxeChange: (axe: string) => void;
 };

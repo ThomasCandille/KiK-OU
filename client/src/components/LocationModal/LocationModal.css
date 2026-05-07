@@ -51,14 +51,14 @@
   color: var(--bureau-color);
 }
 
-.location-option.crealab {
-  border-color: var(--crealab-color);
-  color: var(--crealab-color);
+.location-option.creativ_lab {
+  border-color: var(--creativ_lab-color);
+  color: var(--creativ_lab-color);
 }
 
-.location-option.reunion {
-  border-color: var(--reunion-color);
-  color: var(--reunion-color);
+.location-option.indisponible {
+  border-color: var(--indisponible-color);
+  color: var(--indisponible-color);
 }
 
 .location-option.teletravail {
