@@ -120,9 +120,11 @@ const User = () => {
                     onChange={(e) => setSelectedLocation(e.target.value)}
                 >
                     <option value="bureau">Au bureau</option>
-                    <option value="crealab">Au CreaLab</option>
-                    <option value="reunion">En réunion</option>
+                    <option value="creativ_lab">Au CreaLab</option>
+                    <option value="indisponible">Indisponible</option>
                     <option value="teletravail">En télétravail</option>
+                    <option value="studio_fond_vert">Studio Fond Vert</option>
+                    <option value="studio_podcast">Studio Podcast</option>
                     <option value="absent">Absent</option>
                 </select>
                 <button className="user-submit-button">Valider</button>

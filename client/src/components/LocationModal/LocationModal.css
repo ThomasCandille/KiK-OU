@@ -51,14 +51,14 @@
   color: var(--bureau-color);
 }
 
-.location-option.crealab {
-  border-color: var(--crealab-color);
-  color: var(--crealab-color);
+.location-option.creativ_lab {
+  border-color: var(--creativ_lab-color);
+  color: var(--creativ_lab-color);
 }
 
-.location-option.reunion {
-  border-color: var(--reunion-color);
-  color: var(--reunion-color);
+.location-option.indisponible {
+  border-color: var(--indisponible-color);
+  color: var(--indisponible-color);
 }
 
 .location-option.teletravail {
@@ -69,4 +69,19 @@
 .location-option.absent {
   border-color: var(--absent-color);
   color: var(--absent-color);
+}
+
+.location-option.inconnu {
+  border-color: var(--inconnu-color);
+  color: var(--inconnu-color);
+}
+
+.location-option.studio_fond_vert {
+  border-color: var(--studio-fond-vert-color);
+  color: var(--studio-fond-vert-color);
+}
+
+.location-option.studio_podcast {
+  border-color: var(--studio-podcast-color);
+  color: var(--studio-podcast-color);
 }
