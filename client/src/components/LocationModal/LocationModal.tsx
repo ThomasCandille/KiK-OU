@@ -34,7 +34,9 @@ const formatUserName = (name: string) =>
 
 const LocationModal = ({ isOpen, user, currentLocation = 'inconnu', selectedAxe = '', onClose, onSelectLocation }: LocationModalProps) => {
 
-  const [pinUnlocked, setPinUnlocked] = useState(false);
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const [pinUnlocked, setPinUnlocked] = useState(isMobile);
+
   const [pinInput, setPinInput] = useState('');
   const unlockTimeoutRef = useRef<number | null>(null);
 
