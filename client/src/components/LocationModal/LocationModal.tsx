@@ -12,7 +12,7 @@ const LOCATION_OPTIONS: LocationOption[] = [
   { value: 'creativ_lab', label: 'Au CreaLab' },
   { value: 'indisponible', label: 'Indisponible' },
   { value: 'teletravail', label: 'En teletravail' },
-  { value: 'absent', label: 'Absent' },
+  { value: 'off', label: 'off' },
   { value: 'studio_fond_vert', label: 'Studio Fond Vert' },
   { value: 'studio_podcast', label: 'Studio Podcast' },
 ];

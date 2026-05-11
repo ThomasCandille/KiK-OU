@@ -1,7 +1,7 @@
 import React from "react";
 import './Location.css';
 
-export type LocationState = 'bureau' | 'creativ_lab' | 'indisponible' | 'teletravail' | 'absent' | 'inconnu' | 'studio_fond_vert' | 'studio_podcast';
+export type LocationState = 'bureau' | 'creativ_lab' | 'indisponible' | 'teletravail' | 'off' | 'inconnu' | 'studio_fond_vert' | 'studio_podcast';
 
 interface LocationProps {
     locationState?: LocationState;
@@ -12,7 +12,7 @@ const locationTextMap: { [key in NonNullable<LocationProps['locationState']>]: s
     creativ_lab: "Au CreaLab",
     indisponible: "Indisponible",
     teletravail: "En télétravail",
-    absent: "En repos",
+    off: "En repos",
     inconnu: "Inconnu",
     studio_fond_vert: "Studio Fond Vert",
     studio_podcast: "Studio Podcast",

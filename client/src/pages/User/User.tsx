@@ -125,7 +125,7 @@ const User = () => {
                     <option value="teletravail">En télétravail</option>
                     <option value="studio_fond_vert">Studio Fond Vert</option>
                     <option value="studio_podcast">Studio Podcast</option>
-                    <option value="absent">Absent</option>
+                    <option value="off">Off</option>
                 </select>
                 <button className="user-submit-button">Valider</button>
                 <button type="button" className="darken-axe-button" onClick={handleDarkenAxe}>

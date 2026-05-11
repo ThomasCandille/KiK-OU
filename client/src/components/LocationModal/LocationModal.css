@@ -118,9 +118,9 @@
   color: var(--teletravail-color);
 }
 
-.location-option.absent {
-  border-color: var(--absent-color);
-  color: var(--absent-color);
+.location-option.off {
+  border-color: var(--off-color);
+  color: var(--off-color);
 }
 
 .location-option.inconnu {

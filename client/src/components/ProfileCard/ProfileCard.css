@@ -17,8 +17,8 @@
             &.teletravail {
                 border-color: var(--teletravail-color);
             }
-            &.absent {
-                border-color: var(--absent-color);
+            &.off {
+                border-color: var(--off-color);
             }
             &.inconnu {
                 border-color: var(--inconnu-color);
@@ -61,8 +61,8 @@
             &.teletravail {
                 border-color: var(--teletravail-color);
             }
-            &.absent {
-                border-color: var(--absent-color);
+            &.off {
+                border-color: var(--off-color);
             }
             &.inconnu {
                 border-color: var(--inconnu-color);
@@ -104,8 +104,8 @@
             &.teletravail {
                 color: var(--teletravail-color);
             }
-            &.absent {
-                color: var(--absent-color);
+            &.off {
+                color: var(--off-color);
             }
             &.inconnu {
                 color: var(--inconnu-color);
@@ -136,8 +136,8 @@
             &.teletravail {
                 color: var(--teletravail-color);
             }
-            &.absent {
-                color: var(--absent-color);
+            &.off {
+                color: var(--off-color);
             }
             &.inconnu {
                 color: var(--inconnu-color);
