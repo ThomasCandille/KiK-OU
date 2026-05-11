@@ -7,11 +7,11 @@
     &.bureau {
         border-color: var(--bureau-color);
     }
-    &.crealab {
-        border-color: var(--crealab-color);
+    &.creativ_lab {
+        border-color: var(--creativ_lab-color);
     }
-    &.reunion {
-        border-color: var(--reunion-color);
+    &.indisponible {
+        border-color: var(--indisponible-color);
     }
     &.teletravail {
         border-color: var(--teletravail-color);
@@ -21,6 +21,12 @@
     }
     &.inconnu {
         border-color: var(--inconnu-color);
+    }
+    &.studio_fond_vert {
+        border-color: var(--studio-fond-vert-color);
+    }
+    &.studio_podcast {
+        border-color: var(--studio-podcast-color);
     }
 }
 
@@ -32,11 +38,11 @@
     &.bureau {
         color: var(--bureau-color);
     }
-    &.crealab {
-        color: var(--crealab-color);
+    &.creativ_lab {
+        color: var(--creativ_lab-color);
     }
-    &.reunion {
-        color: var(--reunion-color);
+    &.indisponible {
+        color: var(--indisponible-color);
     }
     &.teletravail {
         color: var(--teletravail-color);
@@ -46,6 +52,12 @@
     }
     &.inconnu {
         color: var(--inconnu-color);
+    }
+    &.studio_fond_vert {
+        color: var(--studio-fond-vert-color);
+    }
+    &.studio_podcast {
+        color: var(--studio-podcast-color);
     }
 
     &:after {
@@ -60,11 +72,11 @@
     &.bureau:after {
         border-bottom-color: var(--bureau-color);
     }
-    &.crealab:after {
-        border-bottom-color: var(--crealab-color);
+    &.creativ_lab:after {
+        border-bottom-color: var(--creativ_lab-color);
     }
-    &.reunion:after {
-        border-bottom-color: var(--reunion-color);
+    &.indisponible:after {
+        border-bottom-color: var(--indisponible-color);
     }
     &.teletravail:after {
         border-bottom-color: var(--teletravail-color);
@@ -75,6 +87,13 @@
     &.inconnu:after {
         border-bottom-color: var(--inconnu-color);
     }
+    &.studio_fond_vert:after {
+        border-bottom-color: var(--studio-fond-vert-color);
+    }
+    &.studio_podcast:after {
+        border-bottom-color: var(--studio-podcast-color);
+    }
+
 }
 
 @media only screen and (max-width: 1200px) {

@@ -8,11 +8,11 @@
             &.bureau {
                 border-color: var(--bureau-color);
             }
-            &.crealab {
-                border-color: var(--crealab-color);
+            &.creativ_lab {
+                border-color: var(--creativ_lab-color);
             }
-            &.reunion {
-                border-color: var(--reunion-color);
+            &.indisponible {
+                border-color: var(--indisponible-color);
             }
             &.teletravail {
                 border-color: var(--teletravail-color);
@@ -22,6 +22,12 @@
             }
             &.inconnu {
                 border-color: var(--inconnu-color);
+            }
+            &.studio_fond_vert {
+                border-color: var(--studio-fond-vert-color);
+            }
+            &.studio_podcast {
+                border-color: var(--studio-podcast-color);
             }
 }
 
@@ -46,11 +52,11 @@
             &.bureau {
                 border-color: var(--bureau-color);
             }
-            &.crealab {
-                border-color: var(--crealab-color);
+            &.creativ_lab {
+                border-color: var(--creativ_lab-color);
             }
-            &.reunion {
-                border-color: var(--reunion-color);
+            &.indisponible {
+                border-color: var(--indisponible-color);
             }
             &.teletravail {
                 border-color: var(--teletravail-color);
@@ -60,6 +66,12 @@
             }
             &.inconnu {
                 border-color: var(--inconnu-color);
+            }
+            &.studio_fond_vert {
+                border-color: var(--studio-fond-vert-color);
+            }
+            &.studio_podcast {
+                border-color: var(--studio-podcast-color);
             }
 }
 
@@ -83,11 +95,11 @@
             &.bureau {
                 color: var(--bureau-color);
             }
-            &.crealab {
-                color: var(--crealab-color);
+            &.creativ_lab {
+                color: var(--creativ_lab-color);
             }
-            &.reunion {
-                color: var(--reunion-color);
+            &.indisponible {
+                color: var(--indisponible-color);
             }
             &.teletravail {
                 color: var(--teletravail-color);
@@ -98,6 +110,13 @@
             &.inconnu {
                 color: var(--inconnu-color);
             }
+            &.studio_fond_vert {
+                color: var(--studio-fond-vert-color);
+            }
+            &.studio_podcast {
+                color: var(--studio-podcast-color);
+            }
+
         }
 
         .profile-role {
@@ -108,11 +127,11 @@
             &.bureau {
                 color: var(--bureau-color);
             }
-            &.crealab {
-                color: var(--crealab-color);
+            &.creativ_lab {
+                color: var(--creativ_lab-color);
             }
-            &.reunion {
-                color: var(--reunion-color);
+            &.indisponible {
+                color: var(--indisponible-color);
             }
             &.teletravail {
                 color: var(--teletravail-color);
@@ -123,6 +142,13 @@
             &.inconnu {
                 color: var(--inconnu-color);
             }
+            &.studio_fond_vert {
+                color: var(--studio-fond-vert-color);
+            }
+            &.studio_podcast {
+                color: var(--studio-podcast-color);
+            }
+
         }
     }
 }

@@ -27,6 +27,56 @@
   font-size: 18px;
 }
 
+.pin-input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 2px solid var(--color);
+  background: transparent;
+  color: var(--color);
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.4em;
+  outline: none;
+}
+
+.pin-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.pin-pad button {
+  border: 2px solid var(--color);
+  background: transparent;
+  color: var(--color);
+  padding: 14px 0;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.pin-pad button:hover,
+.location-option:hover {
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.pin-pad button:active,
+.location-option:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.pin-pad button:focus-visible,
+.location-option:focus-visible,
+.pin-input:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .location-modal-options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -40,6 +90,8 @@
   padding: 10px 12px;
   cursor: pointer;
   font-size: 16px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
 }
 
 .location-option.active {
@@ -51,14 +103,14 @@
   color: var(--bureau-color);
 }
 
-.location-option.crealab {
-  border-color: var(--crealab-color);
-  color: var(--crealab-color);
+.location-option.creativ_lab {
+  border-color: var(--creativ_lab-color);
+  color: var(--creativ_lab-color);
 }
 
-.location-option.reunion {
-  border-color: var(--reunion-color);
-  color: var(--reunion-color);
+.location-option.indisponible {
+  border-color: var(--indisponible-color);
+  color: var(--indisponible-color);
 }
 
 .location-option.teletravail {
@@ -69,4 +121,19 @@
 .location-option.absent {
   border-color: var(--absent-color);
   color: var(--absent-color);
+}
+
+.location-option.inconnu {
+  border-color: var(--inconnu-color);
+  color: var(--inconnu-color);
+}
+
+.location-option.studio_fond_vert {
+  border-color: var(--studio-fond-vert-color);
+  color: var(--studio-fond-vert-color);
+}
+
+.location-option.studio_podcast {
+  border-color: var(--studio-podcast-color);
+  color: var(--studio-podcast-color);
 }

@@ -12,21 +12,17 @@ type InitialStatePayload = {
   axes: string[];
 };
 
-type UsersFromAxePayload = {
-  users: string[];
-};
-
 type HomeProps = {
   onSelectedAxeChange: (axe: string) => void;
 };
 
 function Home({ onSelectedAxeChange }: HomeProps) {
 
-  const formatCurrentDateTime = (date: Date) =>
-    date.toLocaleString('fr-FR', {
-      dateStyle: 'short',
-      timeStyle: 'medium'
-    });
+  const formatCurrentDateTime = (date: Date) => {
+    const datePart = date.toLocaleDateString('fr-FR', { month: '2-digit', day: '2-digit' });
+    const timePart = date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    return `${datePart} ${timePart}`;
+  };
 
   const formatLastChangeTime = (date: Date) =>
     date.toLocaleTimeString('fr-FR');
@@ -40,14 +36,16 @@ function Home({ onSelectedAxeChange }: HomeProps) {
   );
   const [lastChangeTime, setLastChangeTime] = useState<string | null>(null);
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
+  const [selectedAxe, setSelectedAxe] = useState<string>('');
   const displayedCount = usersFromAxe.length;
   const isCompactLayout = displayedCount <= 3;
 
   const handleAxeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedAxe = event.target.value;
-    onSelectedAxeChange(selectedAxe);
-    if (selectedAxe) {
-      socket.emit('axeChange', selectedAxe);
+    const axe = event.target.value;
+    setSelectedAxe(axe);
+    onSelectedAxeChange(axe);
+    if (axe) {
+      socket.emit('axeChange', axe);
     } else {
       setUsersFromAxe([]);
     }
@@ -77,7 +75,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
 
     const handleUsersFromAxe = ({ users, roles }: { users: string[]; roles: { user: string; role: string }[] }) => {
       const roleByUser = roles.reduce((acc, { user, role }) => ({ ...acc, [user]: role }), {} as { [key: string]: string });
-      const priorityUser = users.find(user => roleByUser[user] === "Responsable d'axe");
+      const priorityUser = users.find(user => roleByUser[user]?.includes("Responsable"));
       const orderedUsers = priorityUser ? [priorityUser, ...users.filter(user => user !== priorityUser)] : users;
 
       setUsersFromAxe(orderedUsers);
@@ -120,10 +118,8 @@ function Home({ onSelectedAxeChange }: HomeProps) {
             {currentDateTime}
           </p>
         <p> - </p>
-        <p>PRESENCES DES MEMBRES DE L'EQUIPE</p>
-        <p> - </p>
         <select onChange={handleAxeChange}>
-          <option value="">Filtrer par axe</option>
+          <option value="">CHOISIR AXE</option>
           {axes.map(axe => (
             <option key={axe} value={axe}>{axe}</option>
           ))}
@@ -132,9 +128,6 @@ function Home({ onSelectedAxeChange }: HomeProps) {
           <p>
             Dernier changement :{' '}{lastChangeTime ? lastChangeTime : 'Aucun changement'}
           </p>
-          <button type="button" onClick={() => window.location.reload()}>
-            Rafraîchir
-          </button>
       </header>
       <div className={`profile-card-container ${isCompactLayout ? 'compact-layout' : 'wide-layout'}`}>
 
@@ -160,6 +153,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
         isOpen={Boolean(selectedUser)}
         user={selectedUser}
         currentLocation={selectedUser ? userLocationDict[selectedUser] : 'inconnu'}
+        selectedAxe={selectedAxe}
         onClose={closeLocationModal}
         onSelectLocation={handleLocationSelect}
       />
