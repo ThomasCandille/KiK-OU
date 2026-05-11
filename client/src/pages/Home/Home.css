@@ -67,7 +67,7 @@
     }
 
 }
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
     .App {
         header {
             h1,
@@ -75,6 +75,14 @@
             select {
                 font-size: 18px;
             }
+
+            .last-change-time {
+                display: none;
+            }
+        }
+
+        .profile-card-container, .profile-card-container.compact-layout, .profile-card-container.wide-layout {
+            grid-template-columns: 1fr;
         }
     }
 }

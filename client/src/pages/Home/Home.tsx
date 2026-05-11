@@ -124,8 +124,8 @@ function Home({ onSelectedAxeChange }: HomeProps) {
             <option key={axe} value={axe}>{axe}</option>
           ))}
         </select>
-        <p> - </p>
-          <p>
+        <p className="last-change-time"> - </p>
+          <p className="last-change-time">
             Dernier changement :{' '}{lastChangeTime ? lastChangeTime : 'Aucun changement'}
           </p>
       </header>
