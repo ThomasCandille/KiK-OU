@@ -86,7 +86,7 @@
         flex-grow: 1;
 
         .profile-name {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 2px;
             color: var(--color);
@@ -120,7 +120,7 @@
         }
 
         .profile-role {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 500;
             color: var(--color);
             

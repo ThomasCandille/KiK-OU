@@ -128,6 +128,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
           <p className="last-change-time">
             Dernier changement :{' '}{lastChangeTime ? lastChangeTime : 'Aucun changement'}
           </p>
+        <button onClick={() => window.location.reload()}>Rafraîchir</button>
       </header>
       <div className={`profile-card-container ${isCompactLayout ? 'compact-layout' : 'wide-layout'}`}>
 
