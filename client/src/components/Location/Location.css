@@ -19,6 +19,9 @@
         &.off {
             border-color: var(--off-color);
         }
+        &.deplacement {
+            border-color: var(--deplacement-color);
+        }
         &.inconnu {
             border-color: var(--inconnu-color);
         }
@@ -49,6 +52,9 @@
     }
     &.off {
         color: var(--off-color);
+    }
+    &.deplacement {
+        color: var(--deplacement-color);
     }
     &.inconnu {
         color: var(--inconnu-color);
@@ -83,6 +89,9 @@
     }
     &.off:after {
         border-bottom-color: var(--off-color);
+    }
+    &.deplacement:after {
+        border-bottom-color: var(--deplacement-color);
     }
     &.inconnu:after {
         border-bottom-color: var(--inconnu-color);

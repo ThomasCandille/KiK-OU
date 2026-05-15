@@ -16,7 +16,7 @@ const ProfileCard = ({ name, location, role, onClick }: ProfileCardProps) => {
             className={`profile-card ${location} ${onClick ? 'clickable' : ''}`}
             onClick={onClick}
         >
-            <img src={"/icon.svg"} alt={`${name}'s profile`} className={`profile-image ${location}`}/>
+            <img src={`/${location}.png`} alt={`${name}'s profile`} className={`profile-image ${location}`}/>
                 <div className="profile-details">
                     <div className='profile-container'>
                         <h2 className={`profile-name ${location}`}>{name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h2>

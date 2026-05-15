@@ -9,12 +9,13 @@ type LocationOption = {
 
 const LOCATION_OPTIONS: LocationOption[] = [
   { value: 'bureau', label: 'Au bureau' },
-  { value: 'creativ_lab', label: 'Au CreaLab' },
-  { value: 'indisponible', label: 'Indisponible' },
   { value: 'teletravail', label: 'En teletravail' },
-  { value: 'off', label: 'off' },
+  { value: 'indisponible', label: 'Indisponible' },
+  { value: 'creativ_lab', label: 'Au CreaLab' },
   { value: 'studio_fond_vert', label: 'Studio Fond Vert' },
   { value: 'studio_podcast', label: 'Studio Podcast' },
+  { value: 'off', label: 'off' },
+  { value: 'deplacement', label: 'En déplacement' },
 ];
 
 type LocationModalProps = {

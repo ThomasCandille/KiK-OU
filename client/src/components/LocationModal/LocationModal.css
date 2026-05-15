@@ -123,6 +123,11 @@
   color: var(--off-color);
 }
 
+.location-option.deplacement {
+  border-color: var(--deplacement-color);
+  color: var(--deplacement-color);
+}
+
 .location-option.inconnu {
   border-color: var(--inconnu-color);
   color: var(--inconnu-color);

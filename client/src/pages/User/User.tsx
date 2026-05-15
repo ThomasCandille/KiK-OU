@@ -126,6 +126,7 @@ const User = () => {
                     <option value="studio_fond_vert">Studio Fond Vert</option>
                     <option value="studio_podcast">Studio Podcast</option>
                     <option value="off">Off</option>
+                    <option value="deplacement">En déplacement</option>
                 </select>
                 <button className="user-submit-button">Valider</button>
                 <button type="button" className="darken-axe-button" onClick={handleDarkenAxe}>

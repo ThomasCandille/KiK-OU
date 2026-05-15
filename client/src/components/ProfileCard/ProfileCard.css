@@ -20,6 +20,9 @@
             &.off {
                 border-color: var(--off-color);
             }
+            &.deplacement {
+                border-color: var(--deplacement-color);
+            }
             &.inconnu {
                 border-color: var(--inconnu-color);
             }
@@ -41,8 +44,8 @@
 }
 
 .profile-image {
-    width: 25%;
-    max-width: 125px;
+    width: 20%;
+    max-width: 100px;
     object-fit: cover;
     flex-shrink: 0;
     padding-inline: 2.5%;
@@ -63,6 +66,9 @@
             }
             &.off {
                 border-color: var(--off-color);
+            }
+            &.deplacement {
+                border-color: var(--deplacement-color);
             }
             &.inconnu {
                 border-color: var(--inconnu-color);
@@ -86,7 +92,7 @@
         flex-grow: 1;
 
         .profile-name {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: 2px;
             color: var(--color);
@@ -106,6 +112,9 @@
             }
             &.off {
                 color: var(--off-color);
+            }
+            &.deplacement {
+                color: var(--deplacement-color);
             }
             &.inconnu {
                 color: var(--inconnu-color);
@@ -138,6 +147,9 @@
             }
             &.off {
                 color: var(--off-color);
+            }
+            &.deplacement {
+                color: var(--deplacement-color);
             }
             &.inconnu {
                 color: var(--inconnu-color);
