@@ -52,7 +52,8 @@ export async function getUsersFromAxe(axe) {
     const { data, error } = await supabase
         .from(TABLE_NAME)
         .select('user')
-        .eq('axe', axe);
+        .eq('axe', axe)
+        .sort('user', { ascending: true });
 
     if (error) throw error;
 
