@@ -161,7 +161,7 @@ function Home({ onSelectedAxeChange }: HomeProps) {
 
       <div className="information-container">
         <p className="information-text">
-          BUREAU CDI MAINTENANT EN 302
+          BUREAU CDI MAINTENANT EN 302 bis
         </p>
       </div>
     </div>
