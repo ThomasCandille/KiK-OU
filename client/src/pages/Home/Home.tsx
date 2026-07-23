@@ -158,6 +158,12 @@ function Home({ onSelectedAxeChange }: HomeProps) {
         onClose={closeLocationModal}
         onSelectLocation={handleLocationSelect}
       />
+
+      <div className="information-container">
+        <p className="information-text">
+          BUREAU CDI MAINTENANT EN 302
+        </p>
+      </div>
     </div>
         
   );

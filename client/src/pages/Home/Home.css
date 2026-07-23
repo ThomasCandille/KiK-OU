@@ -63,7 +63,7 @@
     }
 
     .profile-card-container {
-        height: 85%;
+        height: 75%;
         display: grid;
         gap: 20px;
     }
@@ -86,6 +86,23 @@
     }
 
 }
+
+.information-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 10%;
+
+    border: 3px solid var(--color);
+    background-color: #ffc907;
+    padding: 10px;
+}
+.information-text {
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
 @media (max-width: 768px) {
     .App {
         header {
