@@ -57,7 +57,7 @@
             cursor: pointer;
             font-size: 1.6rem;
             line-height: 1;
-            transform: translateX(200px);
+            transform: translateX(50px);
             opacity: 0.1;
 
             &:hover,
