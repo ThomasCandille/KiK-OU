@@ -52,6 +52,25 @@
             }
         }
 
+        .shrimp-button{
+            all: unset;
+            cursor: pointer;
+            font-size: 1.6rem;
+            line-height: 1;
+            transform: translateX(200px);
+            opacity: 0.1;
+
+            &:hover,
+            &:active,
+            &:focus-visible{
+                background-color: transparent;
+                color: inherit;
+                transform: none;
+                transform: translateX(200px);
+                opacity: 0.1;
+            }
+        }
+
 
         height: 8%;
         padding-inline: 8px;
@@ -83,6 +102,53 @@
 
     .profile-card-item.full-line {
         grid-column: 1 / -1;
+    }
+
+    .shrimp-video-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+    }
+
+    .shrimp-video-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+    }
+
+    .shrimp-video-player {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+
+    .shrimp-video-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        z-index: 1;
+        width: 44px;
+        height: 44px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.45);
+        color: #fff;
+        font-size: 32px;
+        line-height: 36px;
+        cursor: pointer;
+    }
+
+    .shrimp-video-close:hover,
+    .shrimp-video-close:focus-visible {
+        background-color: #fff;
+        color: #000;
     }
 
 }

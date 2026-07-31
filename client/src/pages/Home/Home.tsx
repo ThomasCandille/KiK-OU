@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Home.css';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
 import { io } from 'socket.io-client';
@@ -37,6 +37,8 @@ function Home({ onSelectedAxeChange }: HomeProps) {
   const [lastChangeTime, setLastChangeTime] = useState<string | null>(null);
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
   const [selectedAxe, setSelectedAxe] = useState<string>('');
+  const [isShrimpVideoOpen, setIsShrimpVideoOpen] = useState(false);
+  const shrimpVideoRef = useRef<HTMLVideoElement | null>(null);
   const displayedCount = usersFromAxe.length;
   const isCompactLayout = displayedCount <= 3;
 
@@ -98,6 +100,28 @@ function Home({ onSelectedAxeChange }: HomeProps) {
     setSelectedUser(null);
   };
 
+  const closeShrimpVideo = () => {
+    const video = shrimpVideoRef.current;
+
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+
+    setIsShrimpVideoOpen(false);
+  };
+
+  const openShrimpVideo = () => {
+    const video = shrimpVideoRef.current;
+
+    setIsShrimpVideoOpen(true);
+
+    if (video) {
+      video.currentTime = 0;
+      void video.play().catch(() => undefined);
+    }
+  };
+
   const handleLocationSelect = (location: Exclude<LocationState, 'inconnu'>) => {
     if (!selectedUser) {
       return;
@@ -129,6 +153,14 @@ function Home({ onSelectedAxeChange }: HomeProps) {
             Dernier changement :{' '}{lastChangeTime ? lastChangeTime : 'Aucun changement'}
           </p>
         <button onClick={() => window.location.reload()}>Rafraîchir</button>
+        <button
+          className="shrimp-button"
+          type="button"
+          onClick={openShrimpVideo}
+          aria-label="Lancer la vidéo shrimp"
+        >
+          🦐
+        </button>
       </header>
       <div className={`profile-card-container ${isCompactLayout ? 'compact-layout' : 'wide-layout'}`}>
 
@@ -158,9 +190,30 @@ function Home({ onSelectedAxeChange }: HomeProps) {
         onClose={closeLocationModal}
         onSelectLocation={handleLocationSelect}
       />
+      <div
+        className={`shrimp-video-overlay ${isShrimpVideoOpen ? 'open' : ''}`}
+        aria-hidden={!isShrimpVideoOpen}
+      >
+        <button
+          className="shrimp-video-close"
+          type="button"
+          onClick={closeShrimpVideo}
+          aria-label="Fermer la vidéo"
+        >
+          ×
+        </button>
+        <video
+          ref={shrimpVideoRef}
+          className="shrimp-video-player"
+          onEnded={closeShrimpVideo}
+          playsInline
+        >
+          <source src={`${process.env.PUBLIC_URL}/shrimp%20duet.mp4`} type="video/mp4" />
+          Votre navigateur ne peut pas lire cette vidéo.
+        </video>
+      </div>
     </div>
   );
 }
 
 export default Home;
-
