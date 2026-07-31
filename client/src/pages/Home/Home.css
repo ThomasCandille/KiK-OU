@@ -63,7 +63,7 @@
     }
 
     .profile-card-container {
-        height: 75%;
+        height: 80%;
         display: grid;
         gap: 20px;
     }
@@ -85,23 +85,6 @@
         grid-column: 1 / -1;
     }
 
-}
-
-.information-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 10%;
-
-    border: 3px solid var(--color);
-    background-color: #ffc907;
-    padding: 10px;
-    margin-top: 10px;
-}
-.information-text {
-    font-size: 2.5em;
-    font-weight: 600;
 }
 
 @media (max-width: 768px) {
