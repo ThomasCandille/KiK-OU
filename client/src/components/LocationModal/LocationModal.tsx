@@ -42,7 +42,7 @@ const LocationModal = ({ isOpen, user, currentLocation = 'inconnu', selectedAxe 
   const unlockTimeoutRef = useRef<number | null>(null);
 
   const axePinCodes: { [key: string]: string } = {
-    'CDI': '1111',
+    'DWI-MCD': '1111',
     'B1Paris': '2222',
     'B1Nantes': '3333'
   };
